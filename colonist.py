@@ -8,10 +8,25 @@ This will ideally return:
 """
 
 
+class Cell:
+    pings = 0
+    material = "Uninitialized"
+    def __init__(self, pings, material):
+        self.pings = pings
+        self.material = material
+
+
 class gameState:
-    board = [[""]*3,[""]*4,[""]*5,[""]*3]
+    board = [[""]*3,[""]*4,[""]*5,[""]*3] #later want "" to be a Cell
     def updateState():
-        def clear():
+        for row in board:
+            for cell in row:
+                pass #not sure how to implement
+
+    def clear():
+        for row in board:
+            for cell in row:
+                cell = ""
 
 
 turn_position = input("Enter turn Position (1-4):")
@@ -39,9 +54,5 @@ if turn_position = 1:
     #favor ore wheat sheep
     #else target brick wood
     #port position
-
-if turn_position = 2:
-if turn_position = 3:
-if turn_position = 4:
 
 
