@@ -1,164 +1,166 @@
-# CatanBot
+# Catan Balanced Dice Visualizer (Manual Dice Tracker)
+README.md
+
 Catan Balanced Dice Visualizer (Manual Dice Tracker)
 
-This project is a Streamlit GUI that visualizes the “balanced dice” / “balanced deck” system for Catan (reverse-engineered from the TypeScript DiceControllerBalanced logic).
+This project is a Streamlit GUI that visualizes a balanced dice / balanced deck system for Catan, reverse-engineered from Colonist’s DiceControllerBalanced logic.
 
-For now, it’s a manual tracker:
+This version is a manual dice tracker:
+- You manually input dice rolls (2–12)
+- The app shows the true next-roll probability distribution
+- Probabilities update based on deck depletion, recent-roll penalties, and player-specific 7 fairness rules
 
-You choose the current player
+The architecture is intentionally designed so it can later be connected to live Colonist chat ingestion.
 
-You manually enter the rolled total (2–12)
+--------------------------------------------------
+File Overview
+--------------------------------------------------
 
-The app updates the true next-roll distribution based on:
+- diceTracker.py — Streamlit app + balanced dice engine (manual roll input)
+- README.md — setup and usage instructions (this file)
 
-remaining “deck” cards (2d6 totals across 36 outcomes)
-
-recent-roll penalties (windowed memory)
-
-7 fairness / streak adjustment (player-specific)
-
-Later, this can be extended to read Colonist.io chat automatically.
-
-Files
-
-diceTracker.py — Streamlit app + balanced dice engine (manual roll input)
-
+--------------------------------------------------
 Requirements
+--------------------------------------------------
 
-Python 3.9+ recommended (3.10/3.11 works great)
+- Python 3.9+ (3.10 / 3.11 recommended)
+- Anaconda or Miniconda
+- Python packages:
+  - streamlit
+  - pandas
+  - altair
 
-Anaconda / Miniconda
+--------------------------------------------------
+Environment Setup (Anaconda)
+--------------------------------------------------
 
-Packages: streamlit, pandas, altair
+1. Open Anaconda Prompt
 
-Setup (Anaconda)
-1) Open Anaconda Prompt
+On Windows:
+Start Menu → Anaconda Prompt
 
-On Windows: Start Menu → Anaconda Prompt
+2. Create and activate a virtual environment
 
-2) Create a new conda environment (recommended)
 conda create -n catanbot python=3.11 -y
 conda activate catanbot
 
-3) Install dependencies
+3. Install dependencies
+
 pip install streamlit pandas altair
 
-
-(Optional) Save dependencies:
-
+(Optional)
 pip freeze > requirements.txt
 
-Run the app
+--------------------------------------------------
+Running the App
+--------------------------------------------------
 
-In Anaconda Prompt:
+Navigate to the project directory and launch Streamlit:
 
 cd C:\Users\madha\CatanBot
 conda activate catanbot
 streamlit run diceTracker.py
 
-
-Streamlit will print a URL (usually):
-
+Streamlit will start a local server and print a URL, usually:
 http://localhost:8501
 
-Open that link in your browser.
+Open this link in your browser.
 
-How to use
-Sidebar: Game Setup
+--------------------------------------------------
+How to Use
+--------------------------------------------------
 
-Enter Player 1 and Player 2 names
+Game Setup (Sidebar)
 
-Click Start / Reset Game
+1. Enter names for Player 1 and Player 2
+2. Click Start / Reset Game
 
-This resets the engine and clears roll history.
+This initializes a fresh balanced-dice engine and clears roll history.
 
-Main controls (top row)
+Main Controls
 
-Current player: selects whose perspective the adjusted distribution uses
-(this matters because the 7 adjustment is player-specific)
+- Current player  
+  Chooses whose perspective the adjusted distribution is shown from  
+  (important for 7 fairness logic)
 
-Manual input: rolled total: choose 2–12
+- Manual input: rolled total  
+  Select a dice total (2–12)
 
-Apply Roll: updates the engine state and refreshes charts + table
+- Apply Roll  
+  Applies the roll to the engine and updates all charts
 
-Reshuffle Deck: resets deck counts to standard 2d6 distribution (36 cards)
-⚠️ Does not clear recent-roll memory or 7 fairness/streak state
+- Reshuffle Deck  
+  Refills the deck to the standard 36-card distribution  
+  (does NOT clear recent-roll memory or 7 streak state)
 
-Undo Last: removes the most recent roll (rebuilds state from history)
+- Undo Last  
+  Rebuilds engine state by replaying roll history minus the last roll
 
-What you’re seeing
-Base distribution (deck-only)
+--------------------------------------------------
+What the Visualizations Mean
+--------------------------------------------------
 
-Probability of each total based only on remaining deck counts:
+Base Distribution (Deck-Only)
 
-𝑃
-(
-next
-=
-𝑡
-)
-=
-cards remaining for 
-𝑡
-cards left in deck
-P(next=t)=
-cards left in deck
-cards remaining for t
-	​
+Probability is based purely on remaining cards in the deck:
 
-Adjusted distribution (recent-roll + 7 fairness)
+P(next = t) = remaining cards for t / cards left in deck
 
-Starts from base, then applies:
+Adjusted Distribution
 
-a recent-roll penalty per total based on how often that total appears in the recent window
+Starting from the base distribution, the engine applies:
 
-a 7 multiplier that depends on:
+1. Recent-roll penalty  
+   Totals that appeared recently are temporarily down-weighted
 
-whether the current player has rolled “too many” or “too few” 7s
+2. 7 fairness and streak adjustment (player-specific)  
+   - Penalizes or boosts 7s based on imbalance  
+   - Accounts for streaks of consecutive 7s by the same player
 
-whether there is a streak of consecutive 7s by the same player
+The distribution is then renormalized so probabilities sum to 1.
 
-Then it renormalizes so probabilities sum to 1.
+--------------------------------------------------
+Engine Rules (Important)
+--------------------------------------------------
 
-Important engine behavior
+- The deck contains 36 cards with standard 2d6 frequencies:
+  2:1, 3:2, 4:3, 5:4, 6:5, 7:6, 8:5, 9:4, 10:3, 11:2, 12:1
 
-The deck has 36 total cards matching standard 2d6 totals:
+- Pre-draw reshuffle rule  
+  If fewer than 13 cards remain, the deck reshuffles before the next roll
 
-2:1, 3:2, 4:3, 5:4, 6:5, 7:6, 8:5, 9:4, 10:3, 11:2, 12:1
+- If a manually entered roll has no remaining cards, the engine reshuffles to recover
 
-Pre-draw reshuffle rule:
-If cards_left < 13, the engine reshuffles before applying the next roll.
-
-If you manually input an “impossible” roll (no cards left for that total),
-the engine reshuffles to recover.
-
+--------------------------------------------------
 Troubleshooting
-“streamlit is not recognized” / command not found
+--------------------------------------------------
 
-Make sure your conda environment is activated:
+streamlit command not found
 
+Make sure the environment is activated:
 conda activate catanbot
+
+Verify installation:
 streamlit --version
 
+App loads but doesn’t update
 
-If Streamlit isn’t installed in that environment:
+- Ensure Apply Roll is clicked
+- Refresh the browser
+- Check the Streamlit terminal for errors
 
-pip install streamlit
+--------------------------------------------------
+Planned Extensions
+--------------------------------------------------
 
-The page loads but doesn’t update after clicking buttons
+- Automatic ingestion of Colonist.io chat dice rolls
+- Live per-player statistics
+- Comparison with standard (unbalanced) 2d6 dice
 
-Usually a browser cache / Streamlit session hiccup:
+--------------------------------------------------
+Notes
+--------------------------------------------------
 
-refresh the page
+This project is for visualization and understanding of balanced dice mechanics, not competitive advantage.
 
-make sure you’re clicking Apply Roll
-
-check the terminal running Streamlit for errors
-
-Next steps (planned)
-
-Automatically ingest dice rolls from Colonist.io game chat (instead of manual entry)
-
-Show an event log and per-player 7 stats over time
-
-Compare “balanced dice” vs standard 2d6 distribution side-by-side
+Have fun exploring the math behind the dice.
