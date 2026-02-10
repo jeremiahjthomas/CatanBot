@@ -57,7 +57,7 @@ Running the App
 
 Navigate to the project directory and launch Streamlit:
 
-cd C:\Users\madha\CatanBot
+cd CatanBot
 conda activate catanbot
 streamlit run diceTracker.py
 
