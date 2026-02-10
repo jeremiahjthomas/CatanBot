@@ -1,0 +1,14 @@
+{
+  "last_id": 1,
+  "events": [
+    {
+      "id": 1,
+      "type": "dice_roll",
+      "player": "Gimpel5777",
+      "total": 8,
+      "ts": 1700000000000,
+      "raw": "Gimpel5777 rolled",
+      "received_ts": 1770269659801
+    }
+  ]
+}
