@@ -19,7 +19,8 @@ Build an AI that plays Catan well enough to beat an average human, and a tactics
 | `visualization` | Catan board module: hex grid, topology, board generation, ports, visualizer |
 | `balancedDie` | Python port of Colonist.io's balanced dice engine |
 | `gameState` | Game state data structures, new_game(), all query/helper functions |
-| `botBranch` | *(planned)* Actions, RL environment, agent |
+| `environment` | Action space (249 actions), state transitions, CatanEnv Gym wrapper |
+| `botBranch` | *(planned)* RL agent (PPO + LSTM), self-play training |
 
 ---
 

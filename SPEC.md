@@ -1,157 +1,150 @@
-# SPEC — `gameState` branch
+# SPEC — `environment` branch
 
 ## What this branch does
 
-Implements the full 1v1 Catan game state: all enums, data structures,
-constants, the `new_game()` constructor, and every pure query/helper
-function needed to drive the game. No action application logic yet —
-that lives in the next branch (`catanEnv`).
+Adds the action space, state-transition functions, and the `CatanEnv`
+Gym-compatible wrapper.  After this branch a complete 1v1 game can be
+played from first setup placement through to a winner using either a
+random policy or any Gym-compatible RL agent.
+
+Also extends `env/game_state.py` with three fields needed by the
+apply functions: `discard_target`, `roller`, and `roads_left_to_place`.
 
 ---
 
-## Files added
+## Files added / modified
 
 | File | Description |
 |---|---|
-| `env/game_state.py` | Game state module (see below) |
-| `test_game_state.py` | 57 unit tests — all passing |
+| `env/game_state.py` | +3 fields on `GameState` |
+| `env/actions.py` | Flat action space, mask, decoder |
+| `env/catan_env.py` | All `apply_*` functions + `CatanEnv` |
+| `test_catan_env.py` | 62 unit tests — all passing |
 
 ---
 
-## `env/game_state.py`
+## `env/actions.py`
 
-### Enums
+### Action index layout (249 total)
 
-| Enum | Values |
-|---|---|
-| `Resource` | WOOD, BRICK, SHEEP, WHEAT, ORE |
-| `DevCard` | KNIGHT, ROAD_BUILDING, YEAR_OF_PLENTY, MONOPOLY, VICTORY_POINT |
-| `GamePhase` | 8 setup sub-phases + ROLL, DISCARD, ROBBER, ACTIONS, GAME_OVER |
+| Range | Action | Count |
+|---|---|---|
+| 0–53 | `place_settlement(vertex)` | 54 |
+| 54–107 | `place_city(vertex)` | 54 |
+| 108–179 | `place_road(edge)` | 72 |
+| 180 | `roll_dice` | 1 |
+| 181–199 | `move_robber(hex)` | 19 |
+| 200 | `buy_dev_card` | 1 |
+| 201 | `play_knight` | 1 |
+| 202 | `play_road_building` | 1 |
+| 203–217 | `play_year_of_plenty(combo)` | 15 |
+| 218–222 | `play_monopoly(resource)` | 5 |
+| 223–242 | `bank_trade(give, recv)` | 20 |
+| 243 | `end_turn` | 1 |
+| 244–248 | `discard_resource(resource)` | 5 |
 
-Setup phases follow the standard Catan 2-round placement order:
-P0 settle → P0 road → P1 settle → P1 road → P1 settle (reverse) →
-P1 road → P0 settle → P0 road → ROLL.
+**YOP combos**: 15 `(r1, r2)` pairs with repetition where `r1 ≤ r2`.
 
-### Constants
+**Trade combos**: 20 `(give, recv)` ordered pairs where `give ≠ recv`.
 
-| Constant | Value |
-|---|---|
-| `ROAD_COST` | wood×1, brick×1 |
-| `SETTLEMENT_COST` | wood×1, brick×1, sheep×1, wheat×1 |
-| `CITY_COST` | wheat×2, ore×3 |
-| `DEV_CARD_COST` | sheep×1, wheat×1, ore×1 |
-| `MAX_SETTLEMENTS / CITIES / ROADS` | 5 / 4 / 15 |
-| `BANK_START` | 19 of each resource |
-| `DEV_DECK_COMPOSITION` | 14 knights + 2 road building + 2 YoP + 2 monopoly + 5 VP = 25 |
-| `LONGEST_ROAD_MIN` | 5 |
-| `LARGEST_ARMY_MIN` | 3 |
-| `FRIENDLY_ROBBER_MIN_VP` | 3 |
-| `WIN_VP` | 15 |
+### `action_mask(state) -> np.ndarray[bool, (249,)]`
 
-### Data structures
+Phase-aware boolean mask.  During `ACTIONS`, also checks:
+- Affordability for build/buy actions
+- Road-building sub-phase: only road placement shown while `roads_left_to_place > 0`
+- Dev card timing: excludes cards bought this turn; only one per turn
 
-```python
-@dataclass
-class PlayerState:
-    player_id: int
-    resources: Dict[Resource, int]       # hand
-    dev_hand: List[DevCard]              # full hand (hidden from opponent)
-    dev_bought_this_turn: List[DevCard]  # cannot be played until next turn
-    knights_played: int
-    settlements: List[int]               # vertex_ids
-    cities: List[int]                    # vertex_ids
-    roads: List[int]                     # edge_ids
-    has_longest_road: bool
-    has_largest_army: bool
+### `decode_action(action_id) -> (str, param)`
 
-@dataclass
-class GameState:
-    board: Board
-    players: List[PlayerState]           # len 2
-    phase: GamePhase
-    current_player: int
-    turn_number: int
-    bank: Dict[Resource, int]
-    dev_deck: List[DevCard]
-    robber_hex: int
-    longest_road_holder: Optional[int]
-    largest_army_holder: Optional[int]
-    dev_card_played_this_turn: bool
-    players_to_discard: List[int]
-    dice: BalancedDiceEngine
-    last_roll: Optional[int]
-    winner: Optional[int]
-    last_settlement_vertex: Optional[int]
-    rng: random.Random
-```
-
-### Constructor
-
-```python
-state = new_game(seed=42)
-```
-
-Generates a fresh board, shuffles the dev deck, and initialises a
-`BalancedDiceEngine` — all from `seed`.
-
-### Query functions
-
-| Function | Returns |
-|---|---|
-| `visible_vp(state, pid)` | VP visible to all players |
-| `total_vp(state, pid)` | True VP including hidden VP cards |
-| `check_winner(state)` | player_id or None |
-| `can_afford(state, pid, cost)` | bool |
-| `has_port(state, pid, port_type)` | bool |
-| `trade_rate(state, pid, resource)` | 2, 3, or 4 |
-| `production_for_roll(state, total)` | `{pid: {resource: count}}` |
-| `legal_initial_settlement_locations(state)` | vertex_ids (setup) |
-| `legal_settlement_locations(state, pid)` | vertex_ids (main game) |
-| `legal_city_locations(state, pid)` | vertex_ids |
-| `legal_road_locations(state, pid, setup_vertex=None)` | edge_ids |
-| `legal_robber_hexes(state, pid)` | hex_ids |
-| `compute_road_length(state, pid)` | int (DFS longest path) |
-| `update_special_cards(state)` | mutates state in place |
-
-### Key design decisions
-
-**Vertex adjacency** (`_VERTEX_ADJACENCY`) is precomputed at import time
-from `_EDGE_LIST` — used by all placement legality checks.
-
-**Distance rule**: a settlement vertex is only legal if none of its
-directly adjacent vertices are occupied.
-
-**Road length** uses DFS with backtracking over the player's road graph.
-Opponent settlements/cities block traversal through shared vertices.
-Tie-breaking: current holder keeps the card on a tie; challenger must
-strictly exceed to take it.
-
-**Scarcity rule**: if the bank cannot cover all entitlements for a
-resource on a given roll, no player receives that resource.
-
-**Friendly robber**: `legal_robber_hexes` filters out hexes containing
-opponent structures unless the opponent has `>= 3` visible VP.
-
-**Dev card timing**: `PlayerState.playable_dev_cards()` excludes cards
-in `dev_bought_this_turn` — correctly handles the "can't play what you
-just bought" rule.
+Maps every index to `(action_type, param)` for use by `apply_action`.
 
 ---
 
-## `test_game_state.py` — test coverage (57 tests)
+## `env/catan_env.py`
 
-- `new_game()`: phase, player, board, bank, dev deck, robber, winner,
-  reproducibility
-- VP: visible vs total, longest road, largest army, VP dev cards,
-  win detection
-- `can_afford`: exact resources, insufficient resources
-- `has_port` / `trade_rate`: 2:1, 3:1, no-port
-- `legal_initial_settlement_locations`: all 54 at start, distance rule
-- `legal_settlement_locations`: requires road adjacency, distance rule,
-  occupied vertex excluded
-- `legal_city_locations`: only own settlements, city limit
-- `legal_road_locations`: setup mode, main game, opponent-blocked vertex
-- `legal_robber_hexes`: current hex excluded, friendly robber filter
-- `production_for_roll`: settlement/city production, robber block, empty bank
-- `compute_road_length`: 0 roads, N-road chain, broken by opponent
-- `update_special_cards`: army/road thresholds, tie retention, transfer
+### State transition functions
+
+| Function | What it does |
+|---|---|
+| `apply_place_settlement` | Pays cost (if not setup), adds settlement, awards setup resources in round 2, advances setup phase |
+| `apply_place_road` | Pays cost (if not free), adds road, decrements `roads_left_to_place`, advances setup phase |
+| `apply_place_city` | Pays city cost, swaps settlement→city |
+| `apply_roll_dice` | Rolls balanced dice; distributes resources or triggers discard/robber |
+| `apply_discard` | Removes one card; advances through all discarding players then to ROBBER |
+| `apply_move_robber` | Places robber; auto-steals one random card from opponent if possible |
+| `apply_buy_dev_card` | Pays, draws top of deck, marks as bought-this-turn |
+| `apply_play_knight` | Removes knight, increments count, enters ROBBER phase |
+| `apply_play_road_building` | Removes card, sets `roads_left_to_place = 2` |
+| `apply_play_year_of_plenty` | Removes card, grants 2 resources from bank |
+| `apply_play_monopoly` | Removes card, steals all of one resource from opponent |
+| `apply_bank_trade` | Gives N of `give_r` to bank, receives 1 of `recv_r`; rate from `trade_rate()` |
+| `apply_end_turn` | Clears per-turn state, switches player, increments turn_number |
+| `apply_action(state, action_id)` | Decodes and dispatches; returns winner or None |
+
+### Discard flow
+
+When rolling 7: if any player has > 7 cards, `players_to_discard` is
+populated (roller first), `discard_target` is set, and phase → DISCARD.
+Each `apply_discard` call decrements `discard_target`; when 0, moves to
+next player or → ROBBER (restoring `current_player = roller`).
+
+### Road-building sub-phase
+
+`roads_left_to_place > 0` during ACTIONS causes `action_mask` to show
+only road placement.  Each `apply_place_road` decrements the counter.
+No separate phase needed.
+
+### Observation vector: `encode_observation(state, pid) -> float32[460]`
+
+Always encoded from the current player's perspective:
+
+| Features | Size |
+|---|---|
+| Vertex occupancy (self_settle, self_city, opp_settle, opp_city) | 54×4 = 216 |
+| Edge roads (self, opp) | 72×2 = 144 |
+| Hex state (has_robber, token/12) | 19×2 = 38 |
+| Own resources (/19) | 5 |
+| Opponent total resources (/20) | 1 |
+| Own dev card counts by type (/5) | 5 |
+| Knights played (self/opp, /14) | 2 |
+| Opponent dev hand count (/25) | 1 |
+| Special cards (lr/la × 2 players) | 4 |
+| Bank resources (/19) | 5 |
+| Dev deck remaining (/25) | 1 |
+| VP visible (self/opp, /15) | 2 |
+| Last roll one-hot (2–12) | 11 |
+| Next-roll distribution | 11 |
+| Phase one-hot (13 phases) | 13 |
+| Turn number (/100, capped) | 1 |
+| **Total** | **460** |
+
+### `CatanEnv`
+
+```python
+env = CatanEnv(seed=42)
+obs, info = env.reset()       # info has "action_mask", "current_player"
+obs, r, done, _, info = env.step(action_id)
+legal = env.legal_actions()   # list of valid action indices
+```
+
+Reward: sparse — `+1.0` win, `-1.0` loss, `0.0` all other steps.
+
+---
+
+## `test_catan_env.py` — test coverage (62 tests)
+
+- Action constants: ACTION_DIM, combo sizes, decode coverage
+- `decode_action`: key action types round-trip correctly
+- `reset()`: shape, dtype, mask, current_player
+- `encode_observation`: shape, all-finite
+- Setup phases: correct mask per phase, 54 available vertices at start
+- Full setup sequence: all 8 placements → ROLL, correct structure counts
+- Roll: only ROLL legal; 8 produces resource; 7 → ROBBER/DISCARD
+- Discard: mask shows only discard actions; transitions correctly
+- Build actions: settlement/road/city each deduct cost and update state
+- `end_turn`: switches player, resets phase, increments turn
+- Dev cards: buy (deck, hand, resources), knight (phase, count, hand),
+  monopoly (steal), year of plenty (grant), road building (free roads)
+- Bank trade: 4:1 and 3:1 port rates
+- 10 random games all complete with isolated RNG (seeds 0–9)
+- Win condition detected at 15 VP

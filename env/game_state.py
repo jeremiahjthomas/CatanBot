@@ -182,6 +182,8 @@ class GameState:
 
     dev_card_played_this_turn: bool
     players_to_discard:        List[int]   # who still must discard
+    discard_target:            int         # cards current player must still discard
+    roller:                    int         # player who rolled the current 7
 
     dice:      BalancedDiceEngine
     last_roll: Optional[int]
@@ -190,6 +192,8 @@ class GameState:
 
     # vertex of the most recently placed settlement (needed for setup roads)
     last_settlement_vertex: Optional[int]
+
+    roads_left_to_place: int            # remaining free roads from road-building card
 
     rng: random.Random                  # non-dice randomness (shuffles, etc.)
 
@@ -227,10 +231,13 @@ def new_game(seed: Optional[int] = None) -> GameState:
         largest_army_holder=None,
         dev_card_played_this_turn=False,
         players_to_discard=[],
+        discard_target=0,
+        roller=0,
         dice=dice,
         last_roll=None,
         winner=None,
         last_settlement_vertex=None,
+        roads_left_to_place=0,
         rng=rng,
     )
 
