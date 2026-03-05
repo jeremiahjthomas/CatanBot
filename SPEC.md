@@ -1,131 +1,131 @@
-# SPEC — `visualization` branch
+# SPEC — `balancedDie` branch
 
 ## What this branch does
 
-Implements the foundational board module for CatanBot: the hex grid geometry, topology pre-computation, board generation with Colonist.io constraints, port assignment, and a matplotlib visualiser for manual verification.
+Ports Colonist.io's `DiceControllerBalanced` (TypeScript) to Python as
+`env/balanced_dice.py`. The engine is the authoritative dice source for
+the Catan RL environment — it reproduces the exact fairness behaviour of
+real Colonist.io games.
 
 ---
 
-## Files added / modified
+## Files added
 
 | File | Description |
 |---|---|
-| `env/__init__.py` | Package init |
-| `env/board.py` | Board module (see below) |
-| `test_board.py` | 24 unit tests — all passing |
-| `visualize_board.py` | matplotlib board visualiser |
+| `env/balanced_dice.py` | Balanced dice engine |
+| `test_balanced_dice.py` | 24 unit tests — all passing |
 
 ---
 
-## `env/board.py`
+## `env/balanced_dice.py`
 
-### Hex grid
+### Core idea
 
-19 hexes in pointy-top axial coordinates `(q, r)` — the hexagonal region where `|q| <= 2`, `|r| <= 2`, `|q+r| <= 2`.
+The engine keeps a physical **deck of 36 cards** — one card per (d1, d2)
+pair. Before each draw, two probability adjustments are applied on top of
+the raw deck counts. When fewer than 13 cards remain the deck reshuffles
+automatically before the next draw.
 
+### Constants (match TypeScript source exactly)
+
+| Constant | Value | Meaning |
+|---|---|---|
+| `MINIMUM_CARDS_BEFORE_RESHUFFLING` | 13 | Reshuffle threshold |
+| `PROB_REDUCTION_RECENT` | 0.34 | Weight reduction per recent occurrence |
+| `PROB_REDUCTION_STREAK` | 0.4 | Weight shift per consecutive 7 in a streak |
+| `MAX_RECENT_MEMORY` | 5 | Rolling window of recent totals remembered |
+| `MIN/MAX_SEVEN_ADJUSTMENT` | 0, 2 | Clamp on combined 7-weight multiplier |
+
+### Draw sequence
+
+For each `roll(player_id)` call:
+
+1. **Reshuffle check** — if `cards_left < 13`, refill deck to all 36 cards.
+2. **Base weights** — `weight[t] = deck_count[t] / cards_left`.
+3. **Recent-roll penalty** — for each total `t`:
+   `weight[t] *= max(0, 1 - recent_count[t] * 0.34)`
+4. **Seven fairness** (only when `num_players >= 2`):
+   `weight[7] *= clamp(imbalance_adj + streak_adj, 0, 2)`
+5. **Weighted sample** — pick total proportional to adjusted weights, then
+   pick a random (d1, d2) pair for that total and remove it from the deck.
+6. **State update** — append to recent window, update seven counts/streak.
+
+### Seven fairness detail
+
+**Imbalance adjustment** (keeps cumulative 7-share fair across players):
 ```
-row r=-2:  3 hexes
-row r=-1:  4 hexes
-row r= 0:  5 hexes
-row r=+1:  4 hexes
-row r=+2:  3 hexes
+imbalance_adj = 1 + (ideal_pct - player_pct) / ideal_pct
+```
+- `ideal_pct = 1 / num_players`
+- Returns 1.0 until every player has rolled at least one 7
+
+**Streak adjustment** (penalises a player currently on a 7 streak):
+```
+streak_adj = 0.4 * streak_count * (-1 if streak_player == me else +1)
 ```
 
-Pixel position of a hex center: `x = sqrt3*q + sqrt3/2*r`, `y = 1.5*r`.
+Combined seven multiplier is clamped to [0, 2].
 
-### Topology
-
-Pre-computed at import time from the 19 hex positions:
-
-| Symbol | Contents |
-|---|---|
-| `_VERTEX_POSITIONS` | 54 `(x, y)` positions, deduplicated with EPS=1e-6 |
-| `_EDGE_LIST` | 72 `(va, vb)` pairs |
-| `_HEX_TO_VERTICES` | `hex_id -> [6 vertex ids]` |
-| `_HEX_TO_EDGES` | `hex_id -> [6 edge ids]` |
-| `_VERTEX_TO_HEXES` | `vertex_id -> [1-3 hex ids]` |
-| `_EDGE_TO_HEXES` | `edge_id -> [1-2 hex ids]` |
-| `HEX_ADJACENCY` | `hex_id -> [2-6 neighbour hex ids]` |
-
-Verified by Euler characteristic: `V - E + F = 54 - 72 + 20 = 2` (F = 19 hexes + 1 outer face).
-
-### Board generation
-
-`generate_board(seed=None)` uses rejection sampling:
-1. Shuffle 19 resource tiles and 18 number tokens
-2. Assign tokens to non-desert hexes
-3. Check Colonist.io constraints — reject and retry if violated:
-   - 6 and 8 may not be adjacent
-   - 2 and 12 may not be adjacent
-   - Same number token may not appear on adjacent hexes
-4. Shuffle 9 port types and assign to the 9 fixed coastal edge positions
-5. Return a `Board` dataclass
-
-Typical acceptance rate ~30-50%; 100 boards generated in ~0.1s.
-
-### Ports
-
-9 ports: `["wood", "brick", "sheep", "wheat", "ore", "3:1", "3:1", "3:1", "3:1"]`
-
-Port types are shuffled each game. The 9 positions are fixed coastal edges (each adjacent to exactly 1 hex), identified by edge ID:
+### Public API
 
 ```python
-PORT_SLOT_DEFINITIONS = [3, 9, 29, 48, 59, 66, 63, 51, 18]
-```
+engine = BalancedDiceEngine(num_players=2, seed=None)
 
-Each port edge marks both its endpoint vertices with the port type.
+# Draw a card — returns (dice1, dice2)
+d1, d2 = engine.roll(player_id)
 
-### Key constants
+# Peek at the probability distribution before the next draw
+dist: dict[int, float] = engine.get_distribution(player_id)  # sums to 1
 
-```python
-RESOURCE_TILES = ["wood"]*4 + ["brick"]*3 + ["sheep"]*4 + ["wheat"]*4 + ["ore"]*3 + ["desert"]*1
-NUMBER_TOKENS  = [2,3,3,4,4,5,5,6,6,8,8,9,9,10,10,11,11,12]
-PORT_TYPES     = ["wood","brick","sheep","wheat","ore","3:1","3:1","3:1","3:1"]
+# Force reshuffle
+engine.reshuffle()
+
+# Read-only state (useful for RL observation vector)
+engine.cards_left          # int
+engine.recent_rolls        # list[int], length <= 5
+engine.sevens_by_player()  # dict[player_id, count]
 ```
 
 ---
 
-## `test_board.py` — test coverage
+## `test_balanced_dice.py` — test coverage
 
-**Topology tests** (static, no board generation):
-- Vertex count = 54
-- Edge count = 72
-- Hex count = 19
-- Euler characteristic V-E+F = 2
-- Each vertex adjacent to 1-3 hexes
-- Each hex has exactly 6 vertices and 6 edges
-- Center hex has 6 neighbours
-- All hexes have >= 2 neighbours
-- Adjacency is symmetric
-- No duplicate edges
-- Each edge has 1 or 2 adjacent hexes
+**Standard deck** (static):
+- 36 cards total
+- Totals cover 2–12
+- Pair counts match 2d6 (1,2,3,4,5,6,5,4,3,2,1)
+- All d1, d2 in [1,6]
+- d1 + d2 == total for every pair
 
-**Board generation tests** (seed=42):
-- Resource distribution matches standard (4/3/4/4/3/1)
-- Token distribution matches standard 18 tokens
-- Desert has no number token
-- Robber starts on desert
+**Engine construction**:
+- Fresh engine has 36 cards and empty recent_rolls
 
-**Constraint tests** (30 seeds):
-- No adjacent 6 & 8
-- No adjacent 2 & 12
-- No adjacent same token
+**Drawing**:
+- `roll()` returns valid (d1, d2)
+- `roll()` decrements `cards_left`
+- `roll()` appends to `recent_rolls`
+- `recent_rolls` never exceeds `MAX_RECENT_MEMORY`
 
-**Other**:
-- Seeded generation is reproducible
-- 100 boards generated in < 10s
-- 18 port vertices (9 ports x 2)
-- Ports only on coastal vertices
-- Port types shuffled across seeds
+**Reshuffle**:
+- Can draw down to 12 cards without a reshuffle
+- Auto-reshuffle triggers when below threshold
+- Manual `reshuffle()` resets `cards_left` to 36
 
----
+**Long-run correctness**:
+- 36,000 rolls produce totals within 15% of standard 2d6 frequencies
 
-## `visualize_board.py`
+**`get_distribution()`**:
+- Sums to 1.0
+- Covers all totals 2–12
+- All probabilities ≥ 0
+- Still sums to 1 near the reshuffle threshold
 
-matplotlib visualiser. Shows hexes coloured by resource, number tokens with pip dots (red for 6 & 8), robber hex with bold red border, port edges as thick coloured lines with label boxes, vertex IDs, and coastal edge IDs (for debugging port positions).
+**Adjustments**:
+- Recent-roll penalty lowers probability of a recently over-rolled total
+- Seven imbalance: over-represented player gets lower 7 probability
+- Seven streak: streaking player gets lower 7 probability than opponent
 
-```
-python visualize_board.py          # random board, opens window
-python visualize_board.py 42       # seed 42
-python visualize_board.py 42 save  # save to board_viz.png
-```
+**Reproducibility**:
+- Seeded engine produces identical roll sequences
+- Different seeds produce different sequences

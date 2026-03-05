@@ -17,6 +17,7 @@ Build an AI that plays Catan well enough to beat an average human, and a tactics
 | `main` | Merge point — always a stable snapshot |
 | `diceTracker` (merged) | Manual balanced-dice tracker Streamlit app |
 | `visualization` | Catan board module: hex grid, topology, board generation, ports, visualizer |
+| `balancedDie` | Python port of Colonist.io's balanced dice engine |
 | `botBranch` | *(planned)* Game state, actions, RL environment, agent |
 
 ---
