@@ -205,3 +205,13 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# CatanBot project-specific
+colonist/colonist_cookies.json
+colonist/replays/
+training/checkpoints/
+training/checkpoints_v2/
+archive/training/checkpoints/
+archive/training/checkpoints_v2/
+*.png
+*.pt

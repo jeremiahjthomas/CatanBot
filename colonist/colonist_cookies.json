@@ -1,7 +1,7 @@
 [
     {
         "domain": ".colonist.io",
-        "expirationDate": 1775595041.227684,
+        "expirationDate": 1775795450.883094,
         "hostOnly": false,
         "httpOnly": true,
         "name": "jwt_colonist.io",
@@ -10,7 +10,7 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMDAyNjUyNDAiLCJpYXQiOjE3NzMwMDMwNDEsImV4cCI6MTc3NTU5NTA0MSwiYXVkIjoiY29sb25pc3QuaW8iLCJpc3MiOiJjb2xvbmlzdC5pbyJ9.KGRMRhxWA3nuJ15cSvMKbq_s1eHKpeE792u5_a1OfnI"
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMDAyNjUyNDAiLCJpYXQiOjE3NzMyMDM0NTEsImV4cCI6MTc3NTc5NTQ1MSwiYXVkIjoiY29sb25pc3QuaW8iLCJpc3MiOiJjb2xvbmlzdC5pbyJ9.VN8IBT8RiDxjRdYBdfItpPSBxojAdTTqGvFNw4G10aQ"
     },
     {
         "domain": ".colonist.io",
@@ -48,6 +48,6 @@
         "secure": true,
         "session": true,
         "storeId": null,
-        "value": "c0935ddc2eef1a3446c75cfde877fa67ec1b8ad214414e1506bd38c318950bd4b798b3251a3309c2cbab3de22440151a4e237cc9eee4ff15cc493c9bda9e22dc%7Cd00ccebedb950fad59a9ea512e915f40c3bf3c2e07559d4e40f49c9419c49a47"
+        "value": "176ecd1fcde013e17b70e7a7ee11d2a871e26f8548adf59bbd6d8a45e4c38247fe488c81c36bb0d6ed266397ee6c25f8a114db66b5f56b8718bb35597a1bc76c%7Cdb3a1d8e3be4b607acfe55385084e21e300971777e4fa7c5ec38b3c397e6b787"
     }
 ]

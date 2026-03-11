@@ -3,6 +3,9 @@ test_catan_env.py  —  unit tests for env/actions.py + env/catan_env.py
 Run:  python test_catan_env.py
 """
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import random
 import sys
 from copy import deepcopy

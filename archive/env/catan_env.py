@@ -38,7 +38,7 @@ from env.actions import (
 )
 from env.board import _EDGE_LIST
 
-OBS_DIM = 460
+OBS_DIM = 574  # 460 + 19*6 hex resource one-hots
 
 
 # ---------------------------------------------------------------------------
@@ -320,10 +320,10 @@ def encode_observation(state: GameState, pid: int) -> np.ndarray:
     """
     Encode state from player pid's perspective into a float32 vector.
 
-    Layout (total 460):
+    Layout (total 574):
       54*4 = 216  vertex occupancy  (self_settle, self_city, opp_settle, opp_city)
       72*2 = 144  edge roads        (self_road, opp_road)
-      19*2 =  38  hex state         (has_robber, token/12)
+      19*8 = 152  hex state         (has_robber, token/12, resource_onehot[6]: wood/brick/sheep/wheat/ore/desert)
            5       own resources    (normalised /19)
            1       opp resource total (normalised /20)
            5       own dev card counts by type (/5)
@@ -355,10 +355,13 @@ def encode_observation(state: GameState, pid: int) -> np.ndarray:
     for eid in range(72):
         obs += [float(eid in s_r), float(eid in o_r)]
 
-    # 3. Hexes (38)
+    # 3. Hexes (152): has_robber, number_token, resource one-hot (6: wood/brick/sheep/wheat/ore/desert)
+    _HEX_RES_IDX = {"wood": 0, "brick": 1, "sheep": 2, "wheat": 3, "ore": 4, "desert": 5}
     for hid in range(19):
         h = state.board.hexes[hid]
-        obs += [float(hid == state.robber_hex), h.number_token / 12.0]
+        res_oh = [0.0] * 6
+        res_oh[_HEX_RES_IDX.get(h.resource, 5)] = 1.0
+        obs += [float(hid == state.robber_hex), h.number_token / 12.0] + res_oh
 
     # 4. Own resources (5)
     for r in Resource:

@@ -13,12 +13,15 @@ Generates two board diagrams side by side:
          to read off the CatanEnv ID.
 
 Usage:
-    python visualize_mapping.py          # open interactive window
-    python visualize_mapping.py save     # save mapping_viz.png
+    python visualize_mapping.py <game_id>           # open interactive window
+    python visualize_mapping.py <game_id> save      # save <game_id>_mapping.png
 """
 
-import sys, math, json
+import sys
+import math
+import json
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -31,16 +34,7 @@ from env.board import (
 )
 
 # ── colours ────────────────────────────────────────────────────────────────
-RESOURCE_COLORS = {
-    "wood":   "#3a7d3a",
-    "brick":  "#c05e2a",
-    "sheep":  "#82c43e",
-    "wheat":  "#e8c200",
-    "ore":    "#7a8c99",
-    "desert": "#d4c5a0",
-}
 PLAYER_COLORS = {1: "#e74c3c", 5: "#2575c4"}   # red / blue
-PIP = {2:1, 3:2, 4:3, 5:4, 6:5, 8:5, 9:4, 10:3, 11:2, 12:1}
 SIZE = 1.0
 
 # ── helpers ────────────────────────────────────────────────────────────────
@@ -58,9 +52,10 @@ def edge_mid(eid):
     return (xa+xb)/2, (ya+yb)/2
 
 # ── load colonist state ─────────────────────────────────────────────────────
-def load_colonist():
-    p = Path("replay_207429263_gamedata.json")
+def load_colonist(game_id):
+    p = Path(__file__).parent / "replays" / f"replay_{game_id}_gamedata.json"
     if not p.exists():
+        print(f"Game data not found: {p}")
         return {}, {}
     events = json.loads(p.read_text())["data"]["eventHistory"]["events"]
     corners, edges = {}, {}
@@ -83,25 +78,12 @@ def draw_grid(ax, board,
     ax.set_aspect("equal"); ax.axis("off")
     ax.set_title(title, fontsize=10, fontweight="bold", pad=6)
 
-    # hexes
+    # hexes — blank fill, no resources or numbers (they'd be wrong anyway)
     for h in board.hexes:
         pts = hex_verts(h.q, h.r)
         ax.add_patch(Polygon(pts, closed=True,
-                             facecolor=RESOURCE_COLORS[h.resource],
-                             edgecolor="#444", linewidth=1.1, zorder=1))
-        cx = SIZE * (SQRT3 * h.q + SQRT3/2 * h.r)
-        cy = SIZE * 1.5 * h.r
-        if h.number_token:
-            col = "#c0392b" if h.number_token in (6,8) else "#111"
-            ax.text(cx, cy + 0.08, str(h.number_token),
-                    fontsize=9, fontweight="bold", color=col,
-                    ha="center", va="center", zorder=3)
-            # pips
-            n = PIP.get(h.number_token, 0)
-            for p in range(n):
-                px_ = cx + (p - (n-1)/2)*0.09
-                ax.add_patch(plt.Circle((px_, cy-0.15), 0.028,
-                                         color=col, zorder=3))
+                             facecolor="#e8e4d8",
+                             edgecolor="#888", linewidth=1.1, zorder=1))
 
     # all edges (thin grey first, then coloured roads on top)
     for eid, (va, vb) in enumerate(_EDGE_LIST):
@@ -178,9 +160,15 @@ def draw_grid(ax, board,
 
 # ── main ───────────────────────────────────────────────────────────────────
 def main():
+    args = [a for a in sys.argv[1:] if a != "save"]
+    if not args:
+        print("Usage: python visualize_mapping.py <game_id> [save]")
+        sys.exit(1)
+    game_id = args[0]
     save = "save" in sys.argv
-    board = generate_board(seed=42)   # fixed seed so board is stable
-    colonist_corners, colonist_edges = load_colonist()
+
+    board = generate_board(seed=42)   # only used for topology; resources/numbers not shown
+    colonist_corners, colonist_edges = load_colonist(game_id)
 
     # Which Colonist vertices/edges appear in the game
     c_vids = set(colonist_corners.keys())
@@ -196,11 +184,9 @@ def main():
     draw_grid(ax_l, board,
               vertex_labels=all_v,
               edge_labels=all_e,
-              title="CatanEnv topology  •  vertex IDs 0–53 (white boxes)  •  edge IDs 0–71 (orange boxes)\n"
-                    "seed=42 random board — geometry & IDs are fixed; resources are illustrative only")
+              title="CatanEnv topology  •  vertex IDs 0–53 (white boxes)  •  edge IDs 0–71 (orange boxes)")
 
     # ── RIGHT: Colonist game — pieces labeled with Colonist IDs ────────────
-    # Show vertex/edge IDs only where Colonist placed something
     c_v_labels = {v: f"C{v}" for v in c_vids if v < len(_VERTEX_POSITIONS)}
     c_e_labels = {e: f"C{e}" for e in c_eids if e < len(_EDGE_LIST)}
 
@@ -209,14 +195,13 @@ def main():
               edge_labels=c_e_labels,
               colonist_corners=colonist_corners,
               colonist_edges=colonist_edges,
-              title="Colonist game 207429263  •  pieces labeled with Colonist IDs (C##)\n"
-                    "Buildings/roads placed at CatanEnv position of SAME numeric ID\n"
-                    "— positions are tentative until mapping confirmed")
+              title=f"Colonist game {game_id}  •  pieces labeled with Colonist IDs (C##)\n"
+                    "Piece positions are tentative — compare with left panel to derive mapping")
 
     # legend
     leg = [
-        mpatches.Patch(color=PLAYER_COLORS[5], label="Player 5 – Dashed (blue)"),
-        mpatches.Patch(color=PLAYER_COLORS[1], label="Player 1 – Klara7578 (red)"),
+        mpatches.Patch(color=PLAYER_COLORS[5], label="Player 5 (blue)"),
+        mpatches.Patch(color=PLAYER_COLORS[1], label="Player 1 (red)"),
         mpatches.Patch(color="white", ec="#333",
                        label="▲ settlement   ■ city   — road"),
     ]
@@ -226,7 +211,7 @@ def main():
     plt.tight_layout(rect=[0, 0.04, 1, 1])
 
     if save:
-        out = "mapping_viz.png"
+        out = str(Path(__file__).parent / "replays" / f"{game_id}_mapping.png")
         plt.savefig(out, dpi=220, bbox_inches="tight")
         print(f"Saved -> {out}  (open and zoom in to read IDs)")
     else:

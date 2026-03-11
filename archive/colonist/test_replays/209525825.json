@@ -1,0 +1,7989 @@
+{
+  "game_id": "209525825",
+  "players": {
+    "1": "Dashed",
+    "5": "CofRED"
+  },
+  "play_order": [
+    1,
+    5
+  ],
+  "settings": {
+    "id": "brick9487",
+    "gameType": 6,
+    "privateGame": false,
+    "playOrderSelectionActive": false,
+    "minimumKarma": 0,
+    "eloType": 3,
+    "modeSetting": 0,
+    "extensionSetting": 0,
+    "scenarioSetting": 0,
+    "mapSetting": 0,
+    "diceSetting": 1,
+    "victoryPointsToWin": 15,
+    "karmaActive": true,
+    "cardDiscardLimit": 9,
+    "maxPlayers": 2,
+    "gameSpeed": 0,
+    "botSpeed": 1,
+    "hideBankCards": true,
+    "friendlyRobber": true
+  },
+  "total_events": 122,
+  "total_actions": 181,
+  "actions": [
+    {
+      "event_idx": 2,
+      "turn": 0,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "build_settlement",
+        "player": 1
+      },
+      "resources_before": [],
+      "resources_after": [],
+      "vp": 1,
+      "buildings": {
+        "settlements": [
+          "22"
+        ],
+        "cities": [],
+        "roads": []
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 3,
+      "turn": 1,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "build_road",
+        "player": 1
+      },
+      "resources_before": [],
+      "resources_after": [],
+      "vp": 1,
+      "buildings": {
+        "settlements": [
+          "22"
+        ],
+        "cities": [],
+        "roads": [
+          "26"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 3,
+      "turn": 1,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [],
+      "resources_after": [],
+      "vp": 0,
+      "buildings": {
+        "settlements": [],
+        "cities": [],
+        "roads": []
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 4,
+      "turn": 1,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "build_settlement",
+        "player": 5
+      },
+      "resources_before": [],
+      "resources_after": [],
+      "vp": 1,
+      "buildings": {
+        "settlements": [
+          "26"
+        ],
+        "cities": [],
+        "roads": []
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 5,
+      "turn": 2,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "build_road",
+        "player": 5
+      },
+      "resources_before": [],
+      "resources_after": [],
+      "vp": 1,
+      "buildings": {
+        "settlements": [
+          "26"
+        ],
+        "cities": [],
+        "roads": [
+          "39"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 5,
+      "turn": 2,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [],
+      "resources_after": [],
+      "vp": 1,
+      "buildings": {
+        "settlements": [
+          "26"
+        ],
+        "cities": [],
+        "roads": [
+          "39"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 6,
+      "turn": 2,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "build_settlement",
+        "player": 5
+      },
+      "resources_before": [],
+      "resources_after": [
+        1,
+        3,
+        4
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 6,
+      "turn": 2,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "wood",
+          "sheep",
+          "wheat"
+        ]
+      },
+      "resources_before": [],
+      "resources_after": [
+        1,
+        3,
+        4
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 7,
+      "turn": 3,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "build_road",
+        "player": 5
+      },
+      "resources_before": [
+        1,
+        3,
+        4
+      ],
+      "resources_after": [
+        1,
+        3,
+        4
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 7,
+      "turn": 3,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [],
+      "resources_after": [],
+      "vp": 1,
+      "buildings": {
+        "settlements": [
+          "22"
+        ],
+        "cities": [],
+        "roads": [
+          "26"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 8,
+      "turn": 3,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "build_settlement",
+        "player": 1
+      },
+      "resources_before": [],
+      "resources_after": [
+        2,
+        5,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 8,
+      "turn": 3,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "brick",
+          "ore",
+          "sheep"
+        ]
+      },
+      "resources_before": [],
+      "resources_after": [
+        2,
+        5,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 9,
+      "turn": 4,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "build_road",
+        "player": 1
+      },
+      "resources_before": [
+        2,
+        5,
+        3
+      ],
+      "resources_after": [
+        2,
+        5,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 9,
+      "turn": 4,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        2,
+        5,
+        3
+      ],
+      "resources_after": [
+        2,
+        5,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 10,
+      "turn": 4,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          6,
+          2
+        ],
+        "total": 8
+      },
+      "resources_before": [
+        2,
+        5,
+        3
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 10,
+      "turn": 4,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "brick"
+        ]
+      },
+      "resources_before": [
+        2,
+        5,
+        3
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 10,
+      "turn": 4,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "brick"
+        ]
+      },
+      "resources_before": [
+        1,
+        3,
+        4
+      ],
+      "resources_after": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 11,
+      "turn": 5,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "resources_after": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 12,
+      "turn": 5,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          6,
+          3
+        ],
+        "total": 9
+      },
+      "resources_before": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "resources_after": [
+        1,
+        3,
+        4,
+        2,
+        1
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 12,
+      "turn": 5,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "wood"
+        ]
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        1
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 12,
+      "turn": 5,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "wood"
+        ]
+      },
+      "resources_before": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "resources_after": [
+        1,
+        3,
+        4,
+        2,
+        1
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 13,
+      "turn": 6,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        1
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        1
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 14,
+      "turn": 6,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          1,
+          2
+        ],
+        "total": 3
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        1
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 14,
+      "turn": 6,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "ore"
+        ]
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        1
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 15,
+      "turn": 7,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        1,
+        3,
+        4,
+        2,
+        1
+      ],
+      "resources_after": [
+        1,
+        3,
+        4,
+        2,
+        1
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 16,
+      "turn": 7,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          2,
+          2
+        ],
+        "total": 4
+      },
+      "resources_before": [
+        1,
+        3,
+        4,
+        2,
+        1
+      ],
+      "resources_after": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 16,
+      "turn": 7,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "sheep"
+        ]
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 16,
+      "turn": 7,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "sheep"
+        ]
+      },
+      "resources_before": [
+        1,
+        3,
+        4,
+        2,
+        1
+      ],
+      "resources_after": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 17,
+      "turn": 8,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5,
+        3
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 18,
+      "turn": 8,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          4,
+          2
+        ],
+        "total": 6
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5,
+        3
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5,
+        3,
+        4
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 18,
+      "turn": 8,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "wheat"
+        ]
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5,
+        3
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5,
+        3,
+        4
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 19,
+      "turn": 9,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3
+      ],
+      "resources_after": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 20,
+      "turn": 9,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          3,
+          4
+        ],
+        "total": 7
+      },
+      "resources_before": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3
+      ],
+      "resources_after": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 20,
+      "turn": 9,
+      "player": null,
+      "player_name": "pNone",
+      "action": {
+        "type": "discard",
+        "player": null
+      },
+      "resources_before": [],
+      "resources_after": [],
+      "vp": 0,
+      "buildings": {
+        "settlements": [],
+        "cities": [],
+        "roads": []
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 21,
+      "turn": 9,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "place_robber",
+        "player": 5,
+        "tile": 0,
+        "blocked_resource": "brick"
+      },
+      "resources_before": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3
+      ],
+      "resources_after": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 22,
+      "turn": 10,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5,
+        3,
+        4
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5,
+        3,
+        4
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 23,
+      "turn": 10,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          2,
+          6
+        ],
+        "total": 8
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5,
+        3,
+        4
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5,
+        3,
+        4,
+        2
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 23,
+      "turn": 10,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "brick"
+        ]
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5,
+        3,
+        4
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        1,
+        5,
+        3,
+        4,
+        2
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 23,
+      "turn": 10,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "brick"
+        ]
+      },
+      "resources_before": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3
+      ],
+      "resources_after": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3,
+        2
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 25,
+      "turn": 11,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3,
+        2
+      ],
+      "resources_after": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3,
+        2
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 26,
+      "turn": 11,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          3,
+          1
+        ],
+        "total": 4
+      },
+      "resources_before": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3,
+        2
+      ],
+      "resources_after": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3,
+        2,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 26,
+      "turn": 11,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "sheep"
+        ]
+      },
+      "resources_before": [
+        2,
+        2,
+        1,
+        5,
+        3,
+        2
+      ],
+      "resources_after": [
+        2,
+        2,
+        1,
+        5,
+        3,
+        2,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 26,
+      "turn": 11,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "sheep"
+        ]
+      },
+      "resources_before": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3,
+        2
+      ],
+      "resources_after": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3,
+        2,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 27,
+      "turn": 11,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "build_road",
+        "player": 5
+      },
+      "resources_before": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        3,
+        2,
+        3
+      ],
+      "resources_after": [
+        3,
+        4,
+        1,
+        3,
+        2,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 28,
+      "turn": 11,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "build_road",
+        "player": 5
+      },
+      "resources_before": [
+        3,
+        4,
+        1,
+        3,
+        2,
+        3
+      ],
+      "resources_after": [
+        3,
+        3
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 29,
+      "turn": 12,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        2,
+        2,
+        1,
+        5,
+        3,
+        2,
+        3
+      ],
+      "resources_after": [
+        2,
+        2,
+        1,
+        5,
+        3,
+        2,
+        3
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 30,
+      "turn": 12,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          1,
+          4
+        ],
+        "total": 5
+      },
+      "resources_before": [
+        2,
+        2,
+        1,
+        5,
+        3,
+        2,
+        3
+      ],
+      "resources_after": [
+        2,
+        2,
+        1,
+        5,
+        3,
+        2,
+        3,
+        4
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 30,
+      "turn": 12,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "wheat"
+        ]
+      },
+      "resources_before": [
+        2,
+        2,
+        1,
+        5,
+        3,
+        2,
+        3
+      ],
+      "resources_after": [
+        2,
+        2,
+        1,
+        5,
+        3,
+        2,
+        3,
+        4
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 30,
+      "turn": 12,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "wheat"
+        ]
+      },
+      "resources_before": [
+        3,
+        3
+      ],
+      "resources_after": [
+        3,
+        3,
+        4
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 31,
+      "turn": 12,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "build_road",
+        "player": 1
+      },
+      "resources_before": [
+        2,
+        2,
+        1,
+        5,
+        3,
+        2,
+        3,
+        4
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 32,
+      "turn": 13,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        3,
+        3,
+        4
+      ],
+      "resources_after": [
+        3,
+        3,
+        4
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 33,
+      "turn": 13,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          2,
+          3
+        ],
+        "total": 5
+      },
+      "resources_before": [
+        3,
+        3,
+        4
+      ],
+      "resources_after": [
+        3,
+        3,
+        4,
+        4
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 33,
+      "turn": 13,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "wheat"
+        ]
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 33,
+      "turn": 13,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "wheat"
+        ]
+      },
+      "resources_before": [
+        3,
+        3,
+        4
+      ],
+      "resources_after": [
+        3,
+        3,
+        4,
+        4
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 34,
+      "turn": 14,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 35,
+      "turn": 14,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          5,
+          3
+        ],
+        "total": 8
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 35,
+      "turn": 14,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "brick"
+        ]
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 35,
+      "turn": 14,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "brick"
+        ]
+      },
+      "resources_before": [
+        3,
+        3,
+        4,
+        4
+      ],
+      "resources_after": [
+        3,
+        3,
+        4,
+        4,
+        2
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 36,
+      "turn": 15,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        3,
+        3,
+        4,
+        4,
+        2
+      ],
+      "resources_after": [
+        3,
+        3,
+        4,
+        4,
+        2
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 37,
+      "turn": 15,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          2,
+          5
+        ],
+        "total": 7
+      },
+      "resources_before": [
+        3,
+        3,
+        4,
+        4,
+        2
+      ],
+      "resources_after": [
+        3,
+        3,
+        4,
+        4,
+        2
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 37,
+      "turn": 15,
+      "player": null,
+      "player_name": "pNone",
+      "action": {
+        "type": "discard",
+        "player": null
+      },
+      "resources_before": [],
+      "resources_after": [],
+      "vp": 0,
+      "buildings": {
+        "settlements": [],
+        "cities": [],
+        "roads": []
+      },
+      "robber_tile": 0
+    },
+    {
+      "event_idx": 38,
+      "turn": 15,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "place_robber",
+        "player": 5,
+        "tile": 3,
+        "blocked_resource": "wheat"
+      },
+      "resources_before": [
+        3,
+        3,
+        4,
+        4,
+        2
+      ],
+      "resources_after": [
+        3,
+        3,
+        4,
+        4,
+        2
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 3
+    },
+    {
+      "event_idx": 39,
+      "turn": 16,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6"
+        ]
+      },
+      "robber_tile": 3
+    },
+    {
+      "event_idx": 40,
+      "turn": 16,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          4,
+          3
+        ],
+        "total": 7
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6"
+        ]
+      },
+      "robber_tile": 3
+    },
+    {
+      "event_idx": 40,
+      "turn": 16,
+      "player": null,
+      "player_name": "pNone",
+      "action": {
+        "type": "discard",
+        "player": null
+      },
+      "resources_before": [],
+      "resources_after": [],
+      "vp": 0,
+      "buildings": {
+        "settlements": [],
+        "cities": [],
+        "roads": []
+      },
+      "robber_tile": 3
+    },
+    {
+      "event_idx": 41,
+      "turn": 16,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "place_robber",
+        "player": 1,
+        "tile": 17,
+        "blocked_resource": "wood"
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 41,
+      "turn": 16,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "steal",
+        "player": 5,
+        "stolen": [
+          "wheat"
+        ]
+      },
+      "resources_before": [
+        3,
+        3,
+        4,
+        4,
+        2
+      ],
+      "resources_after": [
+        3,
+        3,
+        4,
+        2
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 42,
+      "turn": 17,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        3,
+        3,
+        4,
+        2
+      ],
+      "resources_after": [
+        3,
+        3,
+        4,
+        2
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 43,
+      "turn": 17,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          4,
+          5
+        ],
+        "total": 9
+      },
+      "resources_before": [
+        3,
+        3,
+        4,
+        2
+      ],
+      "resources_after": [
+        3,
+        3,
+        4,
+        2
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 43,
+      "turn": 17,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "wood"
+        ]
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        1
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 44,
+      "turn": 18,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        1
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        1
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 45,
+      "turn": 18,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          3,
+          5
+        ],
+        "total": 8
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        1
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        1,
+        2
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 45,
+      "turn": 18,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "brick"
+        ]
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        1
+      ],
+      "resources_after": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        1,
+        2
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 45,
+      "turn": 18,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "brick"
+        ]
+      },
+      "resources_before": [
+        3,
+        3,
+        4,
+        2
+      ],
+      "resources_after": [
+        3,
+        3,
+        4,
+        2,
+        2
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 46,
+      "turn": 18,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "build_road",
+        "player": 1
+      },
+      "resources_before": [
+        2,
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        1,
+        2
+      ],
+      "resources_after": [
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        2
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 47,
+      "turn": 19,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        3,
+        3,
+        4,
+        2,
+        2
+      ],
+      "resources_after": [
+        3,
+        3,
+        4,
+        2,
+        2
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 48,
+      "turn": 19,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          3,
+          3
+        ],
+        "total": 6
+      },
+      "resources_before": [
+        3,
+        3,
+        4,
+        2,
+        2
+      ],
+      "resources_after": [
+        3,
+        3,
+        4,
+        2,
+        2
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 48,
+      "turn": 19,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "wheat"
+        ]
+      },
+      "resources_before": [
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        2
+      ],
+      "resources_after": [
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        2,
+        4
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 49,
+      "turn": 20,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        2,
+        4
+      ],
+      "resources_after": [
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        2,
+        4
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 50,
+      "turn": 20,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          5,
+          5
+        ],
+        "total": 10
+      },
+      "resources_before": [
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        2,
+        4
+      ],
+      "resources_after": [
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        2,
+        4
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 50,
+      "turn": 20,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "sheep",
+          "ore"
+        ]
+      },
+      "resources_before": [
+        3,
+        3,
+        4,
+        2,
+        2
+      ],
+      "resources_after": [
+        3,
+        3,
+        4,
+        2,
+        2,
+        3,
+        5
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 51,
+      "turn": 20,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "play_dev_card",
+        "player": 1,
+        "card": "dev_15"
+      },
+      "resources_before": [
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        2,
+        4
+      ],
+      "resources_after": [
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        2,
+        4,
+        1,
+        1
+      ],
+      "vp": 2,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 52,
+      "turn": 20,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "build_road",
+        "player": 1
+      },
+      "resources_before": [
+        5,
+        3,
+        2,
+        3,
+        4,
+        4,
+        2,
+        4,
+        2,
+        4,
+        1,
+        1
+      ],
+      "resources_after": [
+        5,
+        3,
+        4,
+        2,
+        4,
+        2,
+        4,
+        1
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "3"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 53,
+      "turn": 20,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "build_road",
+        "player": 1
+      },
+      "resources_before": [
+        5,
+        3,
+        4,
+        2,
+        4,
+        2,
+        4,
+        1
+      ],
+      "resources_after": [
+        5,
+        4,
+        2,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "3",
+          "24"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 54,
+      "turn": 21,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        3,
+        3,
+        4,
+        2,
+        2,
+        3,
+        5
+      ],
+      "resources_after": [
+        3,
+        3,
+        4,
+        2,
+        2,
+        3,
+        5
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 55,
+      "turn": 21,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          2,
+          4
+        ],
+        "total": 6
+      },
+      "resources_before": [
+        3,
+        3,
+        4,
+        2,
+        2,
+        3,
+        5
+      ],
+      "resources_after": [
+        3,
+        3,
+        4,
+        2,
+        2,
+        3,
+        5
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 55,
+      "turn": 21,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "wheat"
+        ]
+      },
+      "resources_before": [
+        5,
+        4,
+        2,
+        4
+      ],
+      "resources_after": [
+        5,
+        4,
+        2,
+        4,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "3",
+          "24"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 57,
+      "turn": 22,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        5,
+        4,
+        2,
+        4,
+        4
+      ],
+      "resources_after": [
+        5,
+        4,
+        2,
+        4,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "3",
+          "24"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 58,
+      "turn": 22,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          2,
+          1
+        ],
+        "total": 3
+      },
+      "resources_before": [
+        5,
+        4,
+        2,
+        4,
+        4
+      ],
+      "resources_after": [
+        5,
+        4,
+        2,
+        4,
+        4,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "3",
+          "24"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 58,
+      "turn": 22,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "ore"
+        ]
+      },
+      "resources_before": [
+        5,
+        4,
+        2,
+        4,
+        4
+      ],
+      "resources_after": [
+        5,
+        4,
+        2,
+        4,
+        4,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "3",
+          "24"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 58,
+      "turn": 22,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "ore"
+        ]
+      },
+      "resources_before": [
+        3,
+        2,
+        2,
+        3
+      ],
+      "resources_after": [
+        3,
+        2,
+        2,
+        3,
+        5
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 59,
+      "turn": 23,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        3,
+        2,
+        2,
+        3,
+        5
+      ],
+      "resources_after": [
+        3,
+        2,
+        2,
+        3,
+        5
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 60,
+      "turn": 23,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          5,
+          2
+        ],
+        "total": 7
+      },
+      "resources_before": [
+        3,
+        2,
+        2,
+        3,
+        5
+      ],
+      "resources_after": [
+        3,
+        2,
+        2,
+        3,
+        5
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 61,
+      "turn": 23,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "place_robber",
+        "player": 5,
+        "tile": 5,
+        "blocked_resource": "wood"
+      },
+      "resources_before": [
+        3,
+        2,
+        2,
+        3,
+        5
+      ],
+      "resources_after": [
+        3,
+        2,
+        2,
+        3,
+        5,
+        4
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 5
+    },
+    {
+      "event_idx": 61,
+      "turn": 23,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "steal",
+        "player": 1,
+        "stolen": [
+          "wheat"
+        ]
+      },
+      "resources_before": [
+        5,
+        4,
+        2,
+        4,
+        4,
+        5
+      ],
+      "resources_after": [
+        5,
+        2,
+        4,
+        4,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "3",
+          "24"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 5
+    },
+    {
+      "event_idx": 62,
+      "turn": 24,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        5,
+        2,
+        4,
+        4,
+        5
+      ],
+      "resources_after": [
+        5,
+        2,
+        4,
+        4,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "3",
+          "24"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 5
+    },
+    {
+      "event_idx": 63,
+      "turn": 24,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          6,
+          5
+        ],
+        "total": 11
+      },
+      "resources_before": [
+        5,
+        2,
+        4,
+        4,
+        5
+      ],
+      "resources_after": [
+        5,
+        2,
+        4,
+        4,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "3",
+          "24"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 5
+    },
+    {
+      "event_idx": 63,
+      "turn": 24,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "wheat",
+          "wheat"
+        ]
+      },
+      "resources_before": [
+        3,
+        2,
+        2,
+        3,
+        5,
+        4
+      ],
+      "resources_after": [
+        3,
+        2,
+        2,
+        3,
+        5,
+        4,
+        4,
+        4
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 5
+    },
+    {
+      "event_idx": 64,
+      "turn": 25,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        3,
+        2,
+        2,
+        3,
+        5,
+        4,
+        4,
+        4
+      ],
+      "resources_after": [
+        3,
+        2,
+        2,
+        3,
+        5,
+        4,
+        4,
+        4
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 5
+    },
+    {
+      "event_idx": 65,
+      "turn": 25,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          1,
+          5
+        ],
+        "total": 6
+      },
+      "resources_before": [
+        3,
+        2,
+        2,
+        3,
+        5,
+        4,
+        4,
+        4
+      ],
+      "resources_after": [
+        3,
+        2,
+        2,
+        3,
+        5,
+        4,
+        4,
+        4
+      ],
+      "vp": 3,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 5
+    },
+    {
+      "event_idx": 65,
+      "turn": 25,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "wheat"
+        ]
+      },
+      "resources_before": [
+        5,
+        2,
+        4,
+        4,
+        5
+      ],
+      "resources_after": [
+        5,
+        2,
+        4,
+        4,
+        5,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "3",
+          "24"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 5
+    },
+    {
+      "event_idx": 67,
+      "turn": 26,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        5,
+        2,
+        4,
+        4,
+        5,
+        4
+      ],
+      "resources_after": [
+        5,
+        2,
+        4,
+        4,
+        5,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "3",
+          "24"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 5
+    },
+    {
+      "event_idx": 68,
+      "turn": 26,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          6,
+          1
+        ],
+        "total": 7
+      },
+      "resources_before": [
+        5,
+        2,
+        4,
+        4,
+        5,
+        4
+      ],
+      "resources_after": [
+        5,
+        2,
+        4,
+        4,
+        5,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "3",
+          "24"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 5
+    },
+    {
+      "event_idx": 69,
+      "turn": 26,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "place_robber",
+        "player": 1,
+        "tile": 7,
+        "blocked_resource": "brick"
+      },
+      "resources_before": [
+        5,
+        2,
+        4,
+        4,
+        5,
+        4
+      ],
+      "resources_after": [
+        5,
+        2,
+        4,
+        4,
+        5,
+        4,
+        2
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "3",
+          "24"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 69,
+      "turn": 26,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "steal",
+        "player": 5,
+        "stolen": [
+          "brick"
+        ]
+      },
+      "resources_before": [
+        2,
+        2,
+        3,
+        4,
+        4
+      ],
+      "resources_after": [
+        2,
+        3,
+        4,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 70,
+      "turn": 26,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "trade",
+        "player": 1,
+        "give": [
+          "brick",
+          "brick"
+        ],
+        "receive": [
+          "ore"
+        ]
+      },
+      "resources_before": [
+        5,
+        2,
+        4,
+        4,
+        5,
+        4,
+        2
+      ],
+      "resources_after": [
+        5,
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "3",
+          "24"
+        ],
+        "cities": [],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 71,
+      "turn": 26,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "build_road",
+        "player": 1
+      },
+      "resources_before": [
+        5,
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "resources_after": [
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 72,
+      "turn": 27,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        2,
+        3,
+        4,
+        4
+      ],
+      "resources_after": [
+        2,
+        3,
+        4,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 73,
+      "turn": 27,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          3,
+          6
+        ],
+        "total": 9
+      },
+      "resources_before": [
+        2,
+        3,
+        4,
+        4
+      ],
+      "resources_after": [
+        2,
+        3,
+        4,
+        4,
+        1
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 73,
+      "turn": 27,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "wood",
+          "wood"
+        ]
+      },
+      "resources_before": [
+        4
+      ],
+      "resources_after": [
+        4,
+        1,
+        1
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 73,
+      "turn": 27,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "wood"
+        ]
+      },
+      "resources_before": [
+        2,
+        3,
+        4,
+        4
+      ],
+      "resources_after": [
+        2,
+        3,
+        4,
+        4,
+        1
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 74,
+      "turn": 28,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        4,
+        1,
+        1
+      ],
+      "resources_after": [
+        4,
+        1,
+        1
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 75,
+      "turn": 28,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          5,
+          5
+        ],
+        "total": 10
+      },
+      "resources_before": [
+        4,
+        1,
+        1
+      ],
+      "resources_after": [
+        4,
+        1,
+        1,
+        3,
+        5,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 75,
+      "turn": 28,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "sheep",
+          "ore",
+          "ore"
+        ]
+      },
+      "resources_before": [
+        4,
+        1,
+        1
+      ],
+      "resources_after": [
+        4,
+        1,
+        1,
+        3,
+        5,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 75,
+      "turn": 28,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "sheep",
+          "ore"
+        ]
+      },
+      "resources_before": [
+        2,
+        3,
+        4,
+        4,
+        1
+      ],
+      "resources_after": [
+        2,
+        3,
+        4,
+        4,
+        1,
+        3,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 77,
+      "turn": 29,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        2,
+        3,
+        4,
+        4,
+        1,
+        3,
+        5
+      ],
+      "resources_after": [
+        2,
+        3,
+        4,
+        4,
+        1,
+        3,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 78,
+      "turn": 29,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          2,
+          6
+        ],
+        "total": 8
+      },
+      "resources_before": [
+        2,
+        3,
+        4,
+        4,
+        1,
+        3,
+        5
+      ],
+      "resources_after": [
+        2,
+        3,
+        4,
+        4,
+        1,
+        3,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 78,
+      "turn": 29,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "brick",
+          "brick",
+          "brick"
+        ]
+      },
+      "resources_before": [
+        1,
+        1,
+        5
+      ],
+      "resources_after": [
+        1,
+        1,
+        5,
+        2,
+        2,
+        2
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 79,
+      "turn": 29,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "play_dev_card",
+        "player": 5,
+        "card": "dev_15"
+      },
+      "resources_before": [
+        2,
+        3,
+        4,
+        4,
+        1,
+        3,
+        5
+      ],
+      "resources_after": [
+        2,
+        3,
+        4,
+        4,
+        1,
+        3,
+        5,
+        5,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53",
+          "49"
+        ],
+        "cities": [],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 80,
+      "turn": 29,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "build_road",
+        "player": 5
+      },
+      "resources_before": [
+        2,
+        3,
+        4,
+        4,
+        1,
+        3,
+        5,
+        5,
+        5
+      ],
+      "resources_after": [
+        2,
+        3,
+        1,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 81,
+      "turn": 30,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        1,
+        1,
+        5,
+        2,
+        2,
+        2
+      ],
+      "resources_after": [
+        1,
+        1,
+        5,
+        2,
+        2,
+        2
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 82,
+      "turn": 30,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          4,
+          3
+        ],
+        "total": 7
+      },
+      "resources_before": [
+        1,
+        1,
+        5,
+        2,
+        2,
+        2
+      ],
+      "resources_after": [
+        1,
+        1,
+        5,
+        2,
+        2,
+        2
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 83,
+      "turn": 30,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "place_robber",
+        "player": 1,
+        "tile": 18,
+        "blocked_resource": "wheat"
+      },
+      "resources_before": [
+        1,
+        1,
+        5,
+        2,
+        2,
+        2
+      ],
+      "resources_after": [
+        1,
+        1,
+        5,
+        2,
+        2,
+        2,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 18
+    },
+    {
+      "event_idx": 83,
+      "turn": 30,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "steal",
+        "player": 5,
+        "stolen": [
+          "sheep"
+        ]
+      },
+      "resources_before": [
+        2,
+        3,
+        1,
+        3
+      ],
+      "resources_after": [
+        2,
+        1,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 18
+    },
+    {
+      "event_idx": 84,
+      "turn": 31,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        2,
+        1,
+        3
+      ],
+      "resources_after": [
+        2,
+        1,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 18
+    },
+    {
+      "event_idx": 85,
+      "turn": 31,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          6,
+          1
+        ],
+        "total": 7
+      },
+      "resources_before": [
+        2,
+        1,
+        3
+      ],
+      "resources_after": [
+        2,
+        1,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 18
+    },
+    {
+      "event_idx": 86,
+      "turn": 31,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "place_robber",
+        "player": 5,
+        "tile": 1,
+        "blocked_resource": "brick"
+      },
+      "resources_before": [
+        2,
+        1,
+        3
+      ],
+      "resources_after": [
+        2,
+        1,
+        3,
+        1
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 1
+    },
+    {
+      "event_idx": 86,
+      "turn": 31,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "steal",
+        "player": 1,
+        "stolen": [
+          "wood"
+        ]
+      },
+      "resources_before": [
+        1,
+        1,
+        5,
+        2,
+        2,
+        2,
+        3
+      ],
+      "resources_after": [
+        1,
+        5,
+        2,
+        2,
+        2,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 1
+    },
+    {
+      "event_idx": 87,
+      "turn": 32,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        1,
+        5,
+        2,
+        2,
+        2,
+        3
+      ],
+      "resources_after": [
+        1,
+        5,
+        2,
+        2,
+        2,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 1
+    },
+    {
+      "event_idx": 88,
+      "turn": 32,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "play_dev_card",
+        "player": 1,
+        "card": "knight"
+      },
+      "resources_before": [
+        1,
+        5,
+        2,
+        2,
+        2,
+        3
+      ],
+      "resources_after": [
+        1,
+        5,
+        2,
+        2,
+        2,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 1
+    },
+    {
+      "event_idx": 89,
+      "turn": 32,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "place_robber",
+        "player": 1,
+        "tile": 7,
+        "blocked_resource": "brick"
+      },
+      "resources_before": [
+        1,
+        5,
+        2,
+        2,
+        2,
+        3
+      ],
+      "resources_after": [
+        1,
+        5,
+        2,
+        2,
+        2,
+        3,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 89,
+      "turn": 32,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "steal",
+        "player": 5,
+        "stolen": [
+          "sheep"
+        ]
+      },
+      "resources_before": [
+        2,
+        1,
+        3,
+        1
+      ],
+      "resources_after": [
+        2,
+        1,
+        1
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 90,
+      "turn": 32,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          3,
+          1
+        ],
+        "total": 4
+      },
+      "resources_before": [
+        1,
+        5,
+        2,
+        2,
+        2,
+        3,
+        3
+      ],
+      "resources_after": [
+        1,
+        5,
+        2,
+        2,
+        2,
+        3,
+        3,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 90,
+      "turn": 32,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "sheep"
+        ]
+      },
+      "resources_before": [
+        1,
+        5,
+        2,
+        2,
+        2,
+        3,
+        3
+      ],
+      "resources_after": [
+        1,
+        5,
+        2,
+        2,
+        2,
+        3,
+        3,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 90,
+      "turn": 32,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "sheep"
+        ]
+      },
+      "resources_before": [
+        2,
+        1,
+        1
+      ],
+      "resources_after": [
+        2,
+        1,
+        1,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 91,
+      "turn": 32,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "trade",
+        "player": 1,
+        "give": [
+          "brick",
+          "brick"
+        ],
+        "receive": [
+          "wheat"
+        ]
+      },
+      "resources_before": [
+        1,
+        5,
+        2,
+        2,
+        2,
+        3,
+        3,
+        3
+      ],
+      "resources_after": [
+        1,
+        5,
+        2,
+        3,
+        3,
+        3,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 93,
+      "turn": 33,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        2,
+        1,
+        1,
+        3
+      ],
+      "resources_after": [
+        2,
+        1,
+        1,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 94,
+      "turn": 33,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          1,
+          2
+        ],
+        "total": 3
+      },
+      "resources_before": [
+        2,
+        1,
+        1,
+        3
+      ],
+      "resources_after": [
+        2,
+        1,
+        1,
+        3,
+        5,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 94,
+      "turn": 33,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "ore"
+        ]
+      },
+      "resources_before": [
+        1,
+        2,
+        3,
+        3
+      ],
+      "resources_after": [
+        1,
+        2,
+        3,
+        3,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 94,
+      "turn": 33,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "ore",
+          "ore"
+        ]
+      },
+      "resources_before": [
+        2,
+        1,
+        1,
+        3
+      ],
+      "resources_after": [
+        2,
+        1,
+        1,
+        3,
+        5,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 95,
+      "turn": 34,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        1,
+        2,
+        3,
+        3,
+        5
+      ],
+      "resources_after": [
+        1,
+        2,
+        3,
+        3,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 96,
+      "turn": 34,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          4,
+          6
+        ],
+        "total": 10
+      },
+      "resources_before": [
+        1,
+        2,
+        3,
+        3,
+        5
+      ],
+      "resources_after": [
+        1,
+        2,
+        3,
+        3,
+        5,
+        3,
+        5,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 96,
+      "turn": 34,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "sheep",
+          "ore",
+          "ore"
+        ]
+      },
+      "resources_before": [
+        1,
+        2,
+        3,
+        3,
+        5
+      ],
+      "resources_after": [
+        1,
+        2,
+        3,
+        3,
+        5,
+        3,
+        5,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 96,
+      "turn": 34,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "sheep",
+          "ore",
+          "ore"
+        ]
+      },
+      "resources_before": [
+        2,
+        1,
+        1,
+        3,
+        5,
+        5
+      ],
+      "resources_after": [
+        2,
+        1,
+        1,
+        3,
+        5,
+        5,
+        3,
+        5,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 97,
+      "turn": 34,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "build_road",
+        "player": 1
+      },
+      "resources_before": [
+        1,
+        2,
+        3,
+        3,
+        5,
+        3,
+        5,
+        5
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 98,
+      "turn": 35,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        2,
+        1,
+        1,
+        3,
+        5,
+        5,
+        3,
+        5,
+        5
+      ],
+      "resources_after": [
+        2,
+        1,
+        1,
+        3,
+        5,
+        5,
+        3,
+        5,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 99,
+      "turn": 35,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          1,
+          4
+        ],
+        "total": 5
+      },
+      "resources_before": [
+        2,
+        1,
+        1,
+        3,
+        5,
+        5,
+        3,
+        5,
+        5
+      ],
+      "resources_after": [
+        2,
+        1,
+        1,
+        3,
+        5,
+        5,
+        3,
+        5,
+        5,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 99,
+      "turn": 35,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "brick",
+          "brick",
+          "wheat"
+        ]
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 99,
+      "turn": 35,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "wheat"
+        ]
+      },
+      "resources_before": [
+        2,
+        1,
+        1,
+        3,
+        5,
+        5,
+        3,
+        5,
+        5
+      ],
+      "resources_after": [
+        2,
+        1,
+        1,
+        3,
+        5,
+        5,
+        3,
+        5,
+        5,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 101,
+      "turn": 36,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        4
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 102,
+      "turn": 36,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          2,
+          5
+        ],
+        "total": 7
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        4
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2"
+        ]
+      },
+      "robber_tile": 7
+    },
+    {
+      "event_idx": 103,
+      "turn": 36,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "place_robber",
+        "player": 1,
+        "tile": 17,
+        "blocked_resource": "wood"
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        4
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        4,
+        1
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 103,
+      "turn": 36,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "steal",
+        "player": 5,
+        "stolen": [
+          "wood"
+        ]
+      },
+      "resources_before": [
+        2,
+        1,
+        1,
+        5,
+        3,
+        5,
+        5
+      ],
+      "resources_after": [
+        2,
+        1,
+        5,
+        3,
+        5,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 104,
+      "turn": 36,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "build_road",
+        "player": 1
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        4,
+        1
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        2,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2",
+          "58"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 105,
+      "turn": 37,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        2,
+        1,
+        5,
+        3,
+        5,
+        5
+      ],
+      "resources_after": [
+        2,
+        1,
+        5,
+        3,
+        5,
+        5
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 106,
+      "turn": 37,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          4,
+          4
+        ],
+        "total": 8
+      },
+      "resources_before": [
+        2,
+        1,
+        5,
+        3,
+        5,
+        5
+      ],
+      "resources_after": [
+        2,
+        1,
+        5,
+        3,
+        5,
+        5,
+        2
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 106,
+      "turn": 37,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "brick",
+          "brick",
+          "brick"
+        ]
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        2,
+        4
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        2,
+        4,
+        2,
+        2,
+        2
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2",
+          "58"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 106,
+      "turn": 37,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "brick"
+        ]
+      },
+      "resources_before": [
+        2,
+        1,
+        5,
+        3,
+        5,
+        5
+      ],
+      "resources_after": [
+        2,
+        1,
+        5,
+        3,
+        5,
+        5,
+        2
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 107,
+      "turn": 37,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "play_dev_card",
+        "player": 5,
+        "card": "dev_13"
+      },
+      "resources_before": [
+        2,
+        1,
+        5,
+        3,
+        5,
+        5,
+        2
+      ],
+      "resources_after": [
+        2,
+        1,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 107,
+      "turn": 37,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "monopoly",
+        "player": 5,
+        "resource": "brick",
+        "amount": 4
+      },
+      "resources_before": [
+        2,
+        1,
+        5,
+        3,
+        5,
+        5,
+        2
+      ],
+      "resources_after": [
+        2,
+        1,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 108,
+      "turn": 37,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "trade",
+        "player": 5,
+        "give": [
+          "brick",
+          "brick",
+          "brick",
+          "brick"
+        ],
+        "receive": [
+          "wood"
+        ]
+      },
+      "resources_before": [
+        2,
+        1,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "resources_after": [
+        1,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 109,
+      "turn": 38,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2",
+          "58"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 110,
+      "turn": 38,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          6,
+          3
+        ],
+        "total": 9
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        1,
+        1
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2",
+          "58"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 110,
+      "turn": 38,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "wood",
+          "wood"
+        ]
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        1,
+        1
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2",
+          "58"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 111,
+      "turn": 39,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        1,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1
+      ],
+      "resources_after": [
+        1,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 112,
+      "turn": 39,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          2,
+          2
+        ],
+        "total": 4
+      },
+      "resources_before": [
+        1,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1
+      ],
+      "resources_after": [
+        1,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 112,
+      "turn": 39,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "sheep"
+        ]
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        1,
+        1
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        1,
+        1,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2",
+          "58"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 112,
+      "turn": 39,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "receive_resources",
+        "player": 5,
+        "resources": [
+          "sheep"
+        ]
+      },
+      "resources_before": [
+        1,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1
+      ],
+      "resources_after": [
+        1,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 113,
+      "turn": 40,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "end_turn",
+        "player": 1
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        1,
+        1,
+        3
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        1,
+        1,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2",
+          "58"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 114,
+      "turn": 40,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "dice_roll",
+        "player": 1,
+        "dice": [
+          4,
+          5
+        ],
+        "total": 9
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        1,
+        1,
+        3
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        1,
+        1,
+        3,
+        1,
+        1
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2",
+          "58"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 114,
+      "turn": 40,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "receive_resources",
+        "player": 1,
+        "resources": [
+          "wood",
+          "wood"
+        ]
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        1,
+        1,
+        3
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        1,
+        1,
+        3,
+        1,
+        1
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2",
+          "58"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 115,
+      "turn": 40,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "play_dev_card",
+        "player": 1,
+        "card": "knight"
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        1,
+        1,
+        3,
+        1,
+        1
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        1,
+        1,
+        3,
+        1,
+        1
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2",
+          "58"
+        ]
+      },
+      "robber_tile": 17
+    },
+    {
+      "event_idx": 116,
+      "turn": 40,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "place_robber",
+        "player": 1,
+        "tile": 18,
+        "blocked_resource": "wheat"
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        1,
+        1,
+        3,
+        1,
+        1
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        1,
+        1,
+        3,
+        1,
+        1,
+        1
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2",
+          "58"
+        ]
+      },
+      "robber_tile": 18
+    },
+    {
+      "event_idx": 116,
+      "turn": 40,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "steal",
+        "player": 5,
+        "stolen": [
+          "wood"
+        ]
+      },
+      "resources_before": [
+        1,
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1,
+        3
+      ],
+      "resources_after": [
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 18
+    },
+    {
+      "event_idx": 117,
+      "turn": 40,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "trade",
+        "player": 1,
+        "give": [
+          "wood",
+          "wood",
+          "wood",
+          "wood"
+        ],
+        "receive": [
+          "brick"
+        ]
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        1,
+        1,
+        3,
+        1,
+        1,
+        1
+      ],
+      "resources_after": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        3,
+        1,
+        2
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2",
+          "58"
+        ]
+      },
+      "robber_tile": 18
+    },
+    {
+      "event_idx": 118,
+      "turn": 40,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "build_road",
+        "player": 1
+      },
+      "resources_before": [
+        3,
+        3,
+        5,
+        3,
+        5,
+        5,
+        4,
+        3,
+        1,
+        2
+      ],
+      "resources_after": [
+        3,
+        5,
+        3,
+        5,
+        5,
+        3
+      ],
+      "vp": 5,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24",
+          "47"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2",
+          "58"
+        ]
+      },
+      "robber_tile": 18
+    },
+    {
+      "event_idx": 119,
+      "turn": 41,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1,
+        3
+      ],
+      "resources_after": [
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 18
+    },
+    {
+      "event_idx": 120,
+      "turn": 41,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "dice_roll",
+        "player": 5,
+        "dice": [
+          6,
+          6
+        ],
+        "total": 12
+      },
+      "resources_before": [
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1,
+        3
+      ],
+      "resources_after": [
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 18
+    },
+    {
+      "event_idx": 121,
+      "turn": 41,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1,
+        3
+      ],
+      "resources_after": [
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 18
+    },
+    {
+      "event_idx": 121,
+      "turn": 41,
+      "player": 1,
+      "player_name": "Dashed",
+      "action": {
+        "type": "game_over",
+        "player": 1
+      },
+      "resources_before": [
+        3,
+        5,
+        3,
+        5,
+        5,
+        3
+      ],
+      "resources_after": [
+        3,
+        5,
+        3,
+        5,
+        5,
+        3
+      ],
+      "vp": 5,
+      "buildings": {
+        "settlements": [
+          "22",
+          "7",
+          "24",
+          "47"
+        ],
+        "cities": [
+          "3"
+        ],
+        "roads": [
+          "26",
+          "7",
+          "6",
+          "27",
+          "2",
+          "58"
+        ]
+      },
+      "robber_tile": 18
+    },
+    {
+      "event_idx": 121,
+      "turn": 41,
+      "player": 5,
+      "player_name": "CofRED",
+      "action": {
+        "type": "end_turn",
+        "player": 5
+      },
+      "resources_before": [
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1,
+        3
+      ],
+      "resources_after": [
+        5,
+        3,
+        5,
+        5,
+        2,
+        2,
+        1,
+        3
+      ],
+      "vp": 4,
+      "buildings": {
+        "settlements": [
+          "26",
+          "53"
+        ],
+        "cities": [
+          "49"
+        ],
+        "roads": [
+          "39",
+          "71",
+          "61"
+        ]
+      },
+      "robber_tile": 18
+    }
+  ],
+  "final_vp": {
+    "1": 5,
+    "5": 4
+  },
+  "final_buildings": {
+    "1": {
+      "settlements": [
+        "22",
+        "7",
+        "24",
+        "47"
+      ],
+      "cities": [
+        "3"
+      ],
+      "roads": [
+        "26",
+        "7",
+        "6",
+        "27",
+        "2",
+        "58"
+      ]
+    },
+    "5": {
+      "settlements": [
+        "26",
+        "53"
+      ],
+      "cities": [
+        "49"
+      ],
+      "roads": [
+        "39",
+        "71",
+        "61"
+      ]
+    }
+  }
+}

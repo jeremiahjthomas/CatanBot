@@ -4,6 +4,9 @@ Run:  python test_balanced_dice.py
 """
 
 import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+import sys
 from collections import Counter
 
 from env.balanced_dice import (

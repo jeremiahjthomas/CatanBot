@@ -106,7 +106,7 @@ async def capture(game_id: str, wait_seconds: int) -> list:  # noqa: C901
     async with async_playwright() as p:
         # Connect to the already-running Chrome (launched with --remote-debugging-port=9222)
         print("Connecting to Chrome on port 9222...")
-        browser = await p.chromium.connect_over_cdp("http://localhost:9222")
+        browser = await p.chromium.connect_over_cdp("http://127.0.0.1:9222")
 
         # Find the colonist replay tab
         page = None
@@ -130,13 +130,13 @@ async def capture(game_id: str, wait_seconds: int) -> list:  # noqa: C901
         # Open a CDP session directly on this page target
         cdp = await page.context.new_cdp_session(page)
 
-        # Enable Network domain — captures WS frames at browser level
+        # Enable Network domain BEFORE navigating — captures WS frames from page load
         await cdp.send("Network.enable")
 
-        # Also inject our JS interceptor before next page load (CDP native method)
+        # Inject JS interceptor BEFORE navigating so it runs on page load
         await cdp.send("Page.addScriptToEvaluateOnNewDocument", {"source": INTERCEPT_JS})
 
-        # Intercept HTTP responses — replay data is likely loaded via REST API
+        # Intercept HTTP responses
         http_responses = []
 
         async def on_response(response):
@@ -144,24 +144,23 @@ async def capture(game_id: str, wait_seconds: int) -> list:  # noqa: C901
             if "colonist.io" in url and response.status == 200:
                 try:
                     body = await response.body()
-                    if len(body) > 500:
+                    if len(body) > 200:
                         print(f"  HTTP {response.status} {len(body):6d}b  {url}")
                         entry = {"url": url, "status": response.status, "size": len(body)}
-                        # Save full body for the replay API endpoint
-                        if "api/replay" in url:
+                        if "api/" in url:
                             entry["body"] = body.decode("utf-8", errors="replace")
-                            print(f"    *** GAME DATA captured ({len(body)} bytes) ***")
+                            print(f"    *** API response captured ({len(body)} bytes) ***")
                         http_responses.append(entry)
                 except Exception:
                     pass
 
         page.on("response", on_response)
 
-        # Collect CDP-level WebSocket frames too (keep as fallback)
+        # Collect CDP-level WebSocket frames — must be registered before navigate
         cdp_frames = []
         cdp.on("Network.webSocketFrameReceived", lambda p: cdp_frames.append(p))
 
-        # Navigate
+        # Navigate — interceptors are now active before page loads
         print(f"Navigating to: {replay_url}")
         await page.goto(replay_url, wait_until="domcontentloaded", timeout=60000)
         print(f"Page loaded. URL: {page.url}")
@@ -176,17 +175,34 @@ async def capture(game_id: str, wait_seconds: int) -> list:  # noqa: C901
 
         print(f"\n--- Captured {len(http_responses)} HTTP responses, {len(cdp_frames)} WS frames ---")
 
-        # Save game data if captured
+        # Save all captured API responses
+        replays_dir = Path(__file__).parent / "replays"
         for r in http_responses:
-            if "api/replay" in r["url"] and "body" in r:
-                game_path = Path(f"replay_{game_id}_gamedata.json")
+            if "body" not in r:
+                continue
+            url = r["url"]
+            if "api/replay" in url:
+                game_path = replays_dir / f"replay_{game_id}_gamedata.json"
                 game_path.write_text(r["body"])
-                data = json.loads(r["body"])
-                events = data["data"]["eventHistory"]["events"]
+                events = json.loads(r["body"])["data"]["eventHistory"]["events"]
                 print(f"Game data saved → {game_path}  ({len(events)} events)")
+            else:
+                # Save other API responses for inspection
+                import re
+                slug = re.sub(r"[^\w]", "_", url.split("colonist.io/")[-1])[:60]
+                out = replays_dir / f"api_{game_id}_{slug}.json"
+                out.write_text(r["body"])
+                print(f"  API response saved → {out}")
 
-        # Return WS messages as before (even if empty)
+        # Return JS-intercepted messages + CDP WS frames
         js_messages = await page.evaluate("window._wsMessages || []")
+
+        # Save CDP WS frames separately for inspection
+        if cdp_frames:
+            cdp_path = Path(__file__).parent / "replays" / f"replay_{game_id}_cdp_frames.json"
+            cdp_path.write_text(json.dumps(cdp_frames, indent=2, default=str))
+            print(f"CDP WS frames saved → {cdp_path}  ({len(cdp_frames)} frames)")
+
         raw_messages = js_messages
 
     print(f"Captured {len(raw_messages)} raw messages")
@@ -206,7 +222,7 @@ def main():
     decoded = [decode_message(m) for m in raw]
 
     # Save full dump
-    out_path = Path(f"replay_{cfg.game_id}_messages.json")
+    out_path = Path(__file__).parent / "replays" / f"replay_{cfg.game_id}_messages.json"
     with open(out_path, "w") as f:
         json.dump(decoded, f, indent=2, default=str)
     print(f"Saved {len(decoded)} decoded messages → {out_path}")
