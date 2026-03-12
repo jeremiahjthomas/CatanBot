@@ -9,10 +9,13 @@ Usage:
 """
 
 import sys
+import io
 import json
 import math
 from copy import deepcopy
+from dataclasses import dataclass
 from pathlib import Path
+from typing import Dict, List, Optional
 
 import streamlit as st
 import matplotlib.pyplot as plt
@@ -54,6 +57,162 @@ LOG_TYPE_NAMES = {
     60: "discard", 66: "gain_achievement", 86: "monopoly_steal", 116: "trade",
 }
 PIECE_NAMES = {0: "road", 2: "settlement", 3: "city"}
+
+# ---------------------------------------------------------------------------
+# Balanced dice engine (ported from archive/tools/diceTracker.py — single source of truth)
+# ---------------------------------------------------------------------------
+
+DICE_TOTALS = list(range(2, 13))
+
+
+@dataclass
+class _SevenStreak:
+    player: Optional[object] = None
+    count: int = 0
+
+
+class BalancedDiceEngine:
+    """
+    Reverse-engineered from the Colonist TypeScript DiceControllerBalanced.
+    Models the deck as counts of remaining outcome 'cards' per total (2..12).
+    """
+
+    def __init__(
+        self,
+        players: List,
+        minimum_cards_before_reshuffling: int = 13,
+        probability_reduction_for_recently_rolled: float = 0.34,
+        probability_reduction_for_seven_streaks: float = 0.4,
+        maximum_recent_roll_memory: int = 5,
+    ):
+        self.players = players[:]
+        self.number_of_players = len(players)
+        self.minimum_cards_before_reshuffling = minimum_cards_before_reshuffling
+        self.prob_reduction_recent = probability_reduction_for_recently_rolled
+        self.prob_reduction_seven_streaks = probability_reduction_for_seven_streaks
+        self.maximum_recent_roll_memory = maximum_recent_roll_memory
+        self.deck_counts: Dict[int, int] = {t: 0 for t in DICE_TOTALS}
+        self.cards_left: int = 0
+        self.recent_rolls: List[int] = []
+        self.recently_rolled_count: Dict[int, int] = {t: 0 for t in DICE_TOTALS}
+        self.seven_streak = _SevenStreak(player=None, count=0)
+        self.total_sevens_by_player: Dict = {}
+        self.reshuffle()
+
+    @staticmethod
+    def standard_counts() -> Dict[int, int]:
+        return {2: 1, 3: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 5, 9: 4, 10: 3, 11: 2, 12: 1}
+
+    def reshuffle(self) -> None:
+        std = self.standard_counts()
+        for t in DICE_TOTALS:
+            self.deck_counts[t] = std[t]
+        self.cards_left = 36
+
+    def _init_total_sevens(self, player) -> None:
+        if player not in self.total_sevens_by_player:
+            self.total_sevens_by_player[player] = 0
+
+    def _update_recent_window(self) -> None:
+        if len(self.recent_rolls) <= self.maximum_recent_roll_memory:
+            return
+        oldest = self.recent_rolls.pop(0)
+        self.recently_rolled_count[oldest] = max(0, self.recently_rolled_count[oldest] - 1)
+
+    def _update_seven_rolls(self, player) -> None:
+        self._init_total_sevens(player)
+        self.total_sevens_by_player[player] += 1
+        if self.seven_streak.player == player:
+            self.seven_streak.count += 1
+        else:
+            self.seven_streak.player = player
+            self.seven_streak.count = 1
+
+    def _get_total_sevens_rolled(self) -> int:
+        return sum(self.total_sevens_by_player.values())
+
+    def _get_streak_adjustment_constant(self, player) -> float:
+        if self.seven_streak.player is None:
+            return 0.0
+        sign = -1 if self.seven_streak.player == player else 1
+        return self.prob_reduction_seven_streaks * self.seven_streak.count * sign
+
+    def _get_seven_imbalance_adjustment(self, player) -> float:
+        total_sevens = self._get_total_sevens_rolled()
+        initialized_players = len(self.total_sevens_by_player)
+        if initialized_players == 0 or total_sevens < initialized_players or total_sevens == 0:
+            return 1.0
+        player_sevens = self.total_sevens_by_player.get(player, 0)
+        percentage_of_total = player_sevens / total_sevens
+        ideal_percentage = 1.0 / initialized_players
+        return 1.0 + ((ideal_percentage - percentage_of_total) / ideal_percentage)
+
+    def _seven_probability_multiplier_for_player(self, player) -> float:
+        if self.number_of_players < 2:
+            return 1.0
+        self._init_total_sevens(player)
+        streak_adj = self._get_streak_adjustment_constant(player)
+        imbalance_adj = self._get_seven_imbalance_adjustment(player)
+        return max(0.0, min(2.0, 1.0 * imbalance_adj + streak_adj))
+
+    def base_distribution(self) -> Dict[int, float]:
+        if self.cards_left <= 0:
+            self.reshuffle()
+        return {t: self.deck_counts[t] / self.cards_left for t in DICE_TOTALS}
+
+    def adjusted_distribution(self, player) -> Dict[int, float]:
+        base = self.base_distribution()
+        adjusted = {}
+        for t in DICE_TOTALS:
+            reduction = self.recently_rolled_count[t] * self.prob_reduction_recent
+            adjusted[t] = base[t] * max(0.0, 1.0 - reduction)
+        adjusted[7] *= self._seven_probability_multiplier_for_player(player)
+        s = sum(adjusted.values())
+        if s <= 0:
+            sb = sum(base.values())
+            return {t: (base[t] / sb if sb > 0 else 0.0) for t in DICE_TOTALS}
+        return {t: adjusted[t] / s for t in DICE_TOTALS}
+
+    def apply_roll(self, player, total: int) -> None:
+        if total not in DICE_TOTALS:
+            return
+        if self.cards_left < self.minimum_cards_before_reshuffling:
+            self.reshuffle()
+        if self.deck_counts[total] <= 0:
+            self.reshuffle()
+        self.deck_counts[total] -= 1
+        self.cards_left -= 1
+        self.recent_rolls.append(total)
+        self.recently_rolled_count[total] += 1
+        self._update_recent_window()
+        self._init_total_sevens(player)
+        if total == 7:
+            self._update_seven_rolls(player)
+
+    def snapshot(self) -> Dict:
+        return {
+            "cards_left": self.cards_left,
+            "deck_counts": dict(self.deck_counts),
+            "recent_rolls": list(self.recent_rolls),
+            "recently_rolled_count": dict(self.recently_rolled_count),
+            "seven_streak_player": self.seven_streak.player,
+            "seven_streak_count": self.seven_streak.count,
+            "total_sevens_by_player": dict(self.total_sevens_by_player),
+        }
+
+
+def _engine_from_snapshot(players, snap) -> BalancedDiceEngine:
+    """Reconstruct a BalancedDiceEngine from a snapshot dict."""
+    eng = BalancedDiceEngine(players)
+    eng.deck_counts = dict(snap["deck_counts"])
+    eng.cards_left = snap["cards_left"]
+    eng.recent_rolls = list(snap["recent_rolls"])
+    eng.recently_rolled_count = dict(snap["recently_rolled_count"])
+    eng.seven_streak.player = snap["seven_streak_player"]
+    eng.seven_streak.count = snap["seven_streak_count"]
+    eng.total_sevens_by_player = dict(snap["total_sevens_by_player"])
+    return eng
+
 
 # ---------------------------------------------------------------------------
 # Hex geometry helpers
@@ -329,6 +488,7 @@ def parse_replay(path: Path):
             state["last_dice"] = (dice.get("dice1", 0), dice.get("dice2", 0))
 
         cs = sc.get("currentState", {})
+        prev_player = state["current_player"]
         if "currentTurnPlayerColor" in cs:
             state["current_player"] = cs["currentTurnPlayerColor"]
         if "actionState" in cs:
@@ -355,9 +515,20 @@ def parse_replay(path: Path):
                 state["player_knights_played"][player] += 1
                 update_largest_army(state, player)
 
-            act = _parse_action(ltype, text, player, state)
-            if act:
-                actions.append(act)
+            if ltype == 44:
+                actions.append({"type": "end_turn", "player": prev_player})
+            elif ltype == 1:
+                # Buy dev card: find which card was bought from mechanicDevelopmentCardsState
+                bought = []
+                p_str = str(player)
+                if p_str in dev_state:
+                    bought = dev_state[p_str].get("developmentCardsBoughtThisTurn", [])
+                card_enum = bought[0] if bought else None
+                actions.append({"type": "buy_dev_card", "player": player, "card_enum": card_enum})
+            else:
+                act = _parse_action(ltype, text, player, state)
+                if act:
+                    actions.append(act)
 
         recompute_vp(state)
         return actions
@@ -382,8 +553,6 @@ def parse_replay(path: Path):
         if ltype == 20:
             card = DEV_CARD_NAMES.get(text.get("cardEnum"), f"dev_{text.get('cardEnum')}")
             return {"type": "play_dev_card", "player": player, "card": card}
-        if ltype == 44:
-            return {"type": "end_turn", "player": state["current_player"]}
         if ltype == 47:
             cards = [RESOURCE_NAMES.get(c, f"?{c}") for c in text.get("cardsToBroadcast", [])]
             return {"type": "receive_resources", "player": player, "resources": cards}
@@ -391,6 +560,8 @@ def parse_replay(path: Path):
             cards = [RESOURCE_NAMES.get(c, f"?{c}") for c in text.get("cardEnums", [])]
             return {"type": "receive_cards", "player": player, "resources": cards}
         if ltype == 60:
+            if player is None:
+                return None  # generic "players must discard" broadcast, not player-specific
             return {"type": "discard", "player": player}
         if ltype == 86:
             return {"type": "monopoly", "player": player,
@@ -706,6 +877,10 @@ def action_label(rec):
         return f"🏴 {name} moves robber → tile {act.get('tile')} ({act.get('blocked','')})"
     if t == "steal":
         return f"🗡 {name} steals {act.get('stolen', [])}"
+    if t == "buy_dev_card":
+        card_enum = act.get("card_enum")
+        card_name = _DEV_CARD_NAMES.get(card_enum, f"dev_{card_enum}") if card_enum is not None else "?"
+        return f"🃏 {name} buys dev card ({card_name})"
     if t == "play_dev_card":
         return f"🃏 {name} plays {act.get('card')}"
     if t == "end_turn":
@@ -811,7 +986,7 @@ def _card_html(bg: str, border: str, icon: str, count: int) -> str:
 
 
 # dev card enum → display name (verified from replay data)
-_DEV_CARD_NAMES = {11: "knight", 12: "victory_point", 13: "monopoly", 15: "year_of_plenty"}
+_DEV_CARD_NAMES = {11: "knight", 12: "victory_point", 13: "monopoly", 14: "road_building", 15: "year_of_plenty"}
 _DEV_BG     = "linear-gradient(135deg,#9c5fd4 0%,#6a2faa 100%)"
 _DEV_BORDER = "#4a1a8a"
 
@@ -977,6 +1152,82 @@ def render_player_panel_html(name: str, vp: int, cards: list, dev_cards: list,
     )
 
 
+def _render_dice_chart(snap, play_order, players) -> bytes:
+    """Render a compact balanced-dice distribution chart as PNG bytes."""
+    eng = _engine_from_snapshot(play_order, snap)
+    base = eng.base_distribution()
+    n = len(play_order)
+
+    fig, axes = plt.subplots(1, n, figsize=(4.6, 1.9), sharey=True,
+                              gridspec_kw={"wspace": 0.06},
+                              facecolor="#0e1117")
+    if n == 1:
+        axes = [axes]
+
+    max_prob = max(
+        max(eng.adjusted_distribution(c).values()) for c in play_order
+    )
+
+    for ax, color in zip(axes, play_order):
+        adj = eng.adjusted_distribution(color)
+        hex_col = PLAYER_MCOLORS.get(color, "#888888")
+
+        # Bar fill: player color, slightly desaturated
+        ax.set_facecolor("#0e1117")
+        bar_vals = [adj[t] for t in DICE_TOTALS]
+        ax.bar(DICE_TOTALS, bar_vals, color=hex_col, edgecolor="none",
+               width=0.72, alpha=0.85, zorder=2)
+
+        # Base distribution reference line (gray)
+        ax.plot(DICE_TOTALS, [base[t] for t in DICE_TOTALS],
+                color="#888888", lw=0.8, alpha=0.55, marker=".", ms=2, zorder=3)
+
+        # Percent labels on top of every bar
+        for t, v in zip(DICE_TOTALS, bar_vals):
+            ax.text(t, v + max_prob * 0.03, f"{v*100:.0f}%",
+                    ha="center", va="bottom", fontsize=4.5,
+                    color="#cccccc", zorder=4)
+
+        ax.set_xticks(DICE_TOTALS)
+        ax.tick_params(axis="x", labelsize=5.5, colors="#aaaaaa", length=2)
+        ax.tick_params(axis="y", labelsize=4.5, colors="#888888", length=2)
+        ax.set_ylim(0, max_prob * 1.28)
+        ax.yaxis.set_major_formatter(
+            plt.FuncFormatter(lambda x, _: f"{x*100:.0f}%"))
+        ax.set_title(players.get(color, str(color)), fontsize=6.5, pad=3,
+                     color=hex_col, fontweight="bold")
+        for spine in ax.spines.values():
+            spine.set_edgecolor("#333333")
+
+    # Footer: deck state + recent rolls
+    recent = snap["recent_rolls"]
+    recent_str = "  ".join(str(r) for r in recent) if recent else "—"
+    cards_left = snap["cards_left"]
+    fig.text(0.5, 0.0, f"deck {cards_left}/36  ·  recent: {recent_str}",
+             ha="center", va="bottom", fontsize=5, color="#666666")
+
+    fig.tight_layout(pad=0.5, rect=[0, 0.06, 1, 1])
+    buf = io.BytesIO()
+    fig.savefig(buf, format="png", dpi=120, bbox_inches="tight",
+                facecolor=fig.get_facecolor())
+    plt.close(fig)
+    buf.seek(0)
+    return buf.read()
+
+
+def _board_key(state):
+    """Hashable key that changes only when the visible board changes."""
+    built = tuple(sorted(
+        (k, v.get("owner"), v.get("buildingType", 0))
+        for k, v in state["corners"].items() if v.get("owner")
+    ))
+    roads = tuple(sorted(
+        (k, v.get("owner"))
+        for k, v in state["edges"].items() if v.get("owner")
+    ))
+    return (built, roads, state.get("robber_tile"))
+
+
 def main():
     st.set_page_config(page_title="Catan Replay Viewer", layout="wide")
     st.title("Catan Replay Viewer")
@@ -991,10 +1242,41 @@ def main():
     chosen = st.sidebar.selectbox("Select replay", file_names)
     replay_path = REPLAYS_DIR / chosen
 
-    # --- Parse (cached per file) ---
+    # --- Parse + pre-render (cached per file) ---
     @st.cache_data
     def cached_parse(path_str):
-        return parse_replay(Path(path_str))
+        data = parse_replay(Path(path_str))
+        # Pre-render all unique board states to PNG bytes so navigation is instant.
+        # Many consecutive steps share the same board (dice rolls, trades, etc.),
+        # so we only re-render when the visible board actually changes.
+        prev_key = None
+        prev_img = None
+        for rec in data["timeline"]:
+            key = _board_key(rec["state"])
+            if key != prev_key:
+                fig = draw_board(
+                    rec["state"],
+                    data["tile_data"], data["port_data"],
+                    data["play_order"], data["players"],
+                    data["v_pos"], data["e_pos"],
+                )
+                buf = io.BytesIO()
+                fig.savefig(buf, format="png", dpi=95, bbox_inches="tight")
+                plt.close(fig)
+                buf.seek(0)
+                prev_img = buf.read()
+                prev_key = key
+            rec["board_img"] = prev_img
+
+        # Simulate balanced dice engine forward to snapshot state at each step
+        dice_engine = BalancedDiceEngine(data["play_order"])
+        for rec in data["timeline"]:
+            act = rec["action"]
+            if act["type"] == "dice_roll":
+                dice_engine.apply_roll(act["player"], act["total"])
+            rec["dice_snapshot"] = dice_engine.snapshot()
+
+        return data
 
     data = cached_parse(str(replay_path))
     timeline   = data["timeline"]
@@ -1014,32 +1296,45 @@ def main():
     st.sidebar.markdown(f"**Players:** {', '.join(players.values())}")
     st.sidebar.markdown(f"**Actions:** {len(timeline)}")
 
-    # --- Step state (session state) ---
-    key_step = f"step_{chosen}"
-    if key_step not in st.session_state:
-        st.session_state[key_step] = 0
+    # --- Step state: single source of truth is the slider's session state key ---
+    slider_key = f"slider_{chosen}"
+    if slider_key not in st.session_state:
+        st.session_state[slider_key] = 0
 
-    step = st.session_state[key_step]
+    step = st.session_state[slider_key]
 
-    # Nav buttons
-    col_prev, col_slider, col_next = st.sidebar.columns([1, 4, 1])
+    # Precompute turn boundaries: indices where the turn number increases
+    turn_boundaries = [
+        i for i in range(1, len(timeline))
+        if timeline[i]["turn"] > timeline[i - 1]["turn"]
+    ]
+
+    # Nav buttons: «  ‹  ›  »  — all write to slider_key so slider stays in sync
+    col_tprev, col_prev, col_next, col_tnext = st.sidebar.columns([1, 1, 1, 1])
+    with col_tprev:
+        if st.button("«", key="turn_prev"):
+            targets = [i for i in turn_boundaries if i < step]
+            if targets:
+                st.session_state[slider_key] = targets[-1]
+                st.rerun()
     with col_prev:
-        if st.button("◀", key="prev") and step > 0:
-            st.session_state[key_step] -= 1
+        if st.button("‹", key="prev") and step > 0:
+            st.session_state[slider_key] -= 1
             st.rerun()
     with col_next:
-        if st.button("▶", key="next") and step < len(timeline) - 1:
-            st.session_state[key_step] += 1
+        if st.button("›", key="next") and step < len(timeline) - 1:
+            st.session_state[slider_key] += 1
             st.rerun()
+    with col_tnext:
+        if st.button("»", key="turn_next"):
+            targets = [i for i in turn_boundaries if i > step]
+            if targets:
+                st.session_state[slider_key] = targets[0]
+                st.rerun()
 
-    new_step = st.sidebar.slider(
-        "Step", 0, len(timeline) - 1, step, key=f"slider_{chosen}"
-    )
-    if new_step != step:
-        st.session_state[key_step] = new_step
-        st.rerun()
-
-    step = st.session_state[key_step]
+    # Slider reads/writes slider_key directly — no separate sync needed
+    st.sidebar.slider("Step", 0, len(timeline) - 1, key=slider_key)
+    step = st.session_state[slider_key]
     rec  = timeline[step]
 
     # --- Action log sidebar ---
@@ -1059,9 +1354,7 @@ def main():
     with board_col:
         st.markdown(f"**Turn {rec['turn']} — Step {step + 1}/{len(timeline)}**")
         st.markdown(f"### {action_label(rec)}")
-        fig = draw_board(rec["state"], tile_data, port_data, play_order, players, v_pos, e_pos)
-        st.pyplot(fig)
-        plt.close(fig)
+        st.image(rec["board_img"], use_container_width=True)
 
     with info_col:
         st.markdown("### Player State")
@@ -1091,6 +1384,11 @@ def main():
                 ),
                 unsafe_allow_html=True,
             )
+
+        st.markdown("---")
+        st.markdown("**Balanced Dice Distribution**")
+        dice_img = _render_dice_chart(rec["dice_snapshot"], play_order, players)
+        st.image(dice_img, use_container_width=True)
 
         st.markdown("---")
         st.markdown("### Action detail")
