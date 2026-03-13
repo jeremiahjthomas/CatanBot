@@ -109,6 +109,8 @@ def build_entry(replay_path: Path, mapping: dict) -> dict:
         "unknown_edges":        [],
         "unknown_vertices":     [],
         "game_length_bucket":   None,
+        "is_2p":                None,   # True only for 2-player games
+        "training_eligible":    None,   # True if 2p + parse_success
         "notes":                "",
     }
 
@@ -200,6 +202,14 @@ def build_entry(replay_path: Path, mapping: dict) -> dict:
         else:
             entry["game_length_bucket"] = "long"
 
+        # 2p flag and training eligibility
+        entry["is_2p"] = settings.get("maxPlayers", 0) == 2
+        entry["training_eligible"] = entry["is_2p"] and entry["parse_success"]
+
+        # Warn if not a 2p game
+        if not entry["is_2p"]:
+            entry["parse_warnings"].append(f"not_2p_game (maxPlayers={settings.get('maxPlayers')})")
+
         # Warn if no game_over event (truncated replay?)
         if winner is None:
             entry["parse_warnings"].append("no_game_over_event")
@@ -237,14 +247,18 @@ def build_manifest(replays_dir: Path, out_path: Path, mapping_path: Path) -> Non
     )
 
     # Summary
-    n_ok      = sum(1 for e in entries if e["parse_success"])
-    n_warn    = sum(1 for e in entries if e["parse_warnings"])
-    n_unmapped = sum(1 for e in entries if not e["mapping_coverage_ok"])
-    total_decisions = sum(e["decision_action_count"] or 0 for e in entries)
+    n_ok        = sum(1 for e in entries if e["parse_success"])
+    n_warn      = sum(1 for e in entries if e["parse_warnings"])
+    n_unmapped  = sum(1 for e in entries if not e["mapping_coverage_ok"])
+    n_2p        = sum(1 for e in entries if e["is_2p"])
+    n_eligible  = sum(1 for e in entries if e["training_eligible"])
+    total_decisions     = sum(e["decision_action_count"] or 0 for e in entries)
+    eligible_decisions  = sum(e["decision_action_count"] or 0 for e in entries if e["training_eligible"])
 
     print(f"\nManifest written to {out_path}")
-    print(f"  {len(entries)} replays  |  {n_ok} parsed OK  |  {n_warn} with warnings  |  {n_unmapped} with unmapped IDs")
-    print(f"  Total decision actions across all games: {total_decisions}")
+    print(f"  {len(entries)} replays  |  {n_ok} parsed OK  |  {n_2p} are 2p  |  {n_eligible} training-eligible")
+    print(f"  {n_warn} with warnings  |  {n_unmapped} with unmapped IDs")
+    print(f"  Decision actions — all: {total_decisions}  |  training-eligible only: {eligible_decisions}")
 
 
 def main():
